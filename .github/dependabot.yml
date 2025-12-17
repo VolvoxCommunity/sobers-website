@@ -24,7 +24,6 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    versioning-strategy: increase
     assignees:
       - "BillChirico"
     reviewers:
