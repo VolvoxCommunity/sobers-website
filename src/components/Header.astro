@@ -14,11 +14,7 @@ const navLinks = [
     <div class="flex items-center justify-between h-16">
       <!-- Logo -->
       <a href="/" class="flex items-center gap-2 group">
-        <div
-          class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center"
-        >
-          <span class="text-white font-bold text-sm">S</span>
-        </div>
+        <img src="/logo.png" alt="Sobers logo" class="w-8 h-8 rounded-lg object-contain" />
         <span
           class="font-bold text-lg text-primary-theme group-hover:text-primary transition-colors"
         >
@@ -32,7 +28,8 @@ const navLinks = [
           navLinks.map((link) => (
             <a
               href={link.href}
-              class="text-sm text-secondary-theme hover:text-primary transition-colors"
+              class="nav-link text-sm text-secondary-theme hover:text-primary transition-colors"
+              data-nav-link={link.href.includes("#") ? link.href.split("#")[1] : ""}
             >
               {link.label}
             </a>
@@ -110,7 +107,8 @@ const navLinks = [
           navLinks.map((link) => (
             <a
               href={link.href}
-              class="text-secondary-theme hover:text-primary transition-colors py-2"
+              class="nav-link text-secondary-theme hover:text-primary transition-colors py-2"
+              data-nav-link={link.href.includes("#") ? link.href.split("#")[1] : ""}
             >
               {link.label}
             </a>
@@ -148,4 +146,47 @@ const navLinks = [
       mobileMenuBtn?.setAttribute("aria-expanded", "false");
     });
   });
+
+  // Scroll Spy - highlight nav links based on visible section
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll("[data-nav-link]");
+
+  function updateActiveNavLink() {
+    const scrollPosition = window.scrollY + 100; // Offset for fixed header
+
+    let currentSection = "";
+
+    sections.forEach((section) => {
+      const sectionTop = (section as HTMLElement).offsetTop;
+      const sectionHeight = (section as HTMLElement).offsetHeight;
+
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        currentSection = section.getAttribute("id") || "";
+      }
+    });
+
+    navLinks.forEach((link) => {
+      const linkSection = link.getAttribute("data-nav-link");
+      if (linkSection === currentSection) {
+        link.classList.add("nav-link-active");
+      } else {
+        link.classList.remove("nav-link-active");
+      }
+    });
+  }
+
+  // Run on scroll with throttling for performance
+  let ticking = false;
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        updateActiveNavLink();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  // Run on page load
+  updateActiveNavLink();
 </script>

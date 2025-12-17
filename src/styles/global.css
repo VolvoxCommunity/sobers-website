@@ -238,6 +238,23 @@ a:not(.btn):hover {
   color: var(--color-primary);
 }
 
+/* Active nav link (scroll spy) */
+.nav-link-active {
+  color: var(--color-primary) !important;
+  position: relative;
+}
+
+.nav-link-active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  border-radius: 1px;
+}
+
 /* Interactive element feedback */
 [role="button"],
 button,
