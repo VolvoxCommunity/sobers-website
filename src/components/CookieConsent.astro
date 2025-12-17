@@ -200,4 +200,32 @@
   (window as Window & { showCookiePreferences?: () => void }).showCookiePreferences = () => {
     CookieConsent.showPreferences();
   };
+
+  /**
+   * Syncs cookie consent dark mode with the site's theme.
+   */
+  function syncDarkMode() {
+    const isDark = document.documentElement.classList.contains("dark");
+    const ccMain = document.getElementById("cc-main");
+    if (ccMain) {
+      ccMain.classList.toggle("cc--darkmode", isDark);
+    }
+  }
+
+  // Initial sync after DOM is ready
+  syncDarkMode();
+
+  // Watch for theme changes via MutationObserver on <html> class
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.attributeName === "class") {
+        syncDarkMode();
+      }
+    });
+  });
+
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
 </script>
