@@ -71,6 +71,30 @@ pnpm format && pnpm typecheck && pnpm build
 
 All three MUST pass before proceeding. Fix any errors before committing. Never skip this step.
 
+### Visual Verification
+
+You MUST visually verify changes using the Chrome DevTools MCP:
+
+1. **Start dev server** (if not already running):
+
+   ```bash
+   pnpm dev
+   ```
+
+2. **Navigate to the page** using Chrome DevTools MCP:
+   - Use `mcp__chrome-devtools__navigate_page` to open http://localhost:4321
+   - Navigate to the specific page you modified
+
+3. **Take a snapshot** to verify the UI:
+   - Use `mcp__chrome-devtools__take_snapshot` to inspect the page structure
+   - Use `mcp__chrome-devtools__take_screenshot` if visual verification is needed
+
+4. **Check for errors**:
+   - Use `mcp__chrome-devtools__list_console_messages` to check for console errors
+   - Fix any errors before committing
+
+This visual verification step is MANDATORY for any UI-related changes.
+
 ### Git Commit Strategy
 
 These rules are NON-NEGOTIABLE:
