@@ -92,5 +92,36 @@ const fullCanonicalUrl = canonicalUrl ? `${siteUrl}${canonicalUrl}` : Astro.url.
       <Footer />
     </div>
     <CookieConsent />
+
+    <!-- Confetti for download links -->
+    <script>
+      import confetti from "canvas-confetti";
+
+      // Target all download/store links
+      const downloadSelectors = [
+        'a[href*="apps.apple.com"]',
+        'a[href*="play.google.com"]',
+        'a[href*="app.sobers.app"]',
+      ];
+
+      const downloadLinks = document.querySelectorAll(downloadSelectors.join(", "));
+
+      downloadLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          // Fire confetti from the click position
+          const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+          const x = (rect.left + rect.width / 2) / window.innerWidth;
+          const y = (rect.top + rect.height / 2) / window.innerHeight;
+
+          confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { x, y },
+            colors: ["#007aff", "#af58da", "#22c55e", "#ffffff"],
+            disableForReducedMotion: true,
+          });
+        });
+      });
+    </script>
   </body>
 </html>
