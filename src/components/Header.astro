@@ -1,9 +1,27 @@
 ---
 const navLinks = [
-  { href: "/", label: "Home" },
+  { href: "/#hero", label: "Home" },
   { href: "/#features", label: "Features" },
   { href: "/#how-it-works", label: "How It Works" },
   { href: "/#faq", label: "FAQ" },
+];
+
+const downloadLinks = [
+  {
+    href: "https://apps.apple.com/us/app/sobriety-waypoint/id6755614815",
+    label: "iOS App",
+    icon: "apple",
+  },
+  {
+    href: "https://play.google.com/store/apps/details?id=com.volvox.sobrietywaypoint",
+    label: "Android App",
+    icon: "android",
+  },
+  {
+    href: "https://app.sobers.app",
+    label: "Web App",
+    icon: "web",
+  },
 ];
 ---
 
@@ -76,10 +94,70 @@ const navLinks = [
           </svg>
         </button>
 
-        <!-- Download CTA (Desktop) -->
-        <a href="#download" class="hidden sm:inline-flex btn btn-primary text-sm">
-          Download Free
-        </a>
+        <!-- Download CTA Dropdown (Desktop) -->
+        <div class="hidden sm:block relative" id="download-dropdown">
+          <button
+            type="button"
+            class="btn btn-primary text-sm inline-flex items-center gap-2"
+            id="download-btn"
+            aria-expanded="false"
+            aria-haspopup="true"
+          >
+            Download Free
+            <svg
+              class="w-4 h-4 transition-transform duration-200"
+              id="download-chevron"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div
+            class="absolute right-0 mt-2 w-48 rounded-xl border border-theme bg-theme shadow-lg opacity-0 invisible transition-all duration-200 transform -translate-y-2"
+            id="download-menu"
+            role="menu"
+          >
+            {
+              downloadLinks.map((link) => (
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center gap-3 px-4 py-3 text-sm text-secondary-theme hover:text-primary hover:bg-surface/50 first:rounded-t-xl last:rounded-b-xl transition-colors"
+                  role="menuitem"
+                >
+                  {link.icon === "apple" && (
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+                    </svg>
+                  )}
+                  {link.icon === "android" && (
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M17.523 15.341a.96.96 0 0 0-.192 0h-.064a.96.96 0 1 0 .256 0zm-11.046 0a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm12.71-3.942l1.722-2.986a.357.357 0 0 0-.617-.357l-1.742 3.02A10.455 10.455 0 0 0 12 9.6a10.455 10.455 0 0 0-6.55 1.476L3.708 8.056a.357.357 0 0 0-.617.357l1.722 2.986C1.907 13.217 0 16.297 0 19.8h24c0-3.503-1.907-6.583-4.813-8.4zM6.477 17.261a.96.96 0 1 1 0-1.92.96.96 0 0 1 0 1.92zm11.046 0a.96.96 0 1 1 0-1.92.96.96 0 0 1 0 1.92z" />
+                    </svg>
+                  )}
+                  {link.icon === "web" && (
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+                      />
+                    </svg>
+                  )}
+                  {link.label}
+                </a>
+              ))
+            }
+          </div>
+        </div>
 
         <!-- Mobile Menu Button -->
         <button
@@ -114,7 +192,44 @@ const navLinks = [
             </a>
           ))
         }
-        <a href="#download" class="btn btn-primary text-sm w-full mt-2"> Download Free </a>
+        <!-- Mobile Download Links -->
+        <div class="mt-2 pt-4 border-t border-theme">
+          <p class="text-xs text-muted-theme mb-3 uppercase tracking-wider">Download</p>
+          <div class="flex flex-col gap-2">
+            {
+              downloadLinks.map((link) => (
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center gap-3 px-4 py-3 text-sm text-secondary-theme hover:text-primary bg-surface/50 rounded-lg transition-colors"
+                >
+                  {link.icon === "apple" && (
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+                    </svg>
+                  )}
+                  {link.icon === "android" && (
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M17.523 15.341a.96.96 0 0 0-.192 0h-.064a.96.96 0 1 0 .256 0zm-11.046 0a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm12.71-3.942l1.722-2.986a.357.357 0 0 0-.617-.357l-1.742 3.02A10.455 10.455 0 0 0 12 9.6a10.455 10.455 0 0 0-6.55 1.476L3.708 8.056a.357.357 0 0 0-.617.357l1.722 2.986C1.907 13.217 0 16.297 0 19.8h24c0-3.503-1.907-6.583-4.813-8.4zM6.477 17.261a.96.96 0 1 1 0-1.92.96.96 0 0 1 0 1.92zm11.046 0a.96.96 0 1 1 0-1.92.96.96 0 0 1 0 1.92z" />
+                    </svg>
+                  )}
+                  {link.icon === "web" && (
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+                      />
+                    </svg>
+                  )}
+                  {link.label}
+                </a>
+              ))
+            }
+          </div>
+        </div>
       </div>
     </div>
   </nav>
@@ -147,6 +262,50 @@ const navLinks = [
     });
   });
 
+  // Download Dropdown
+  const downloadBtn = document.getElementById("download-btn");
+  const downloadMenu = document.getElementById("download-menu");
+  const downloadChevron = document.getElementById("download-chevron");
+
+  function openDownloadMenu() {
+    downloadMenu?.classList.remove("opacity-0", "invisible", "-translate-y-2");
+    downloadMenu?.classList.add("opacity-100", "visible", "translate-y-0");
+    downloadChevron?.classList.add("rotate-180");
+    downloadBtn?.setAttribute("aria-expanded", "true");
+  }
+
+  function closeDownloadMenu() {
+    downloadMenu?.classList.add("opacity-0", "invisible", "-translate-y-2");
+    downloadMenu?.classList.remove("opacity-100", "visible", "translate-y-0");
+    downloadChevron?.classList.remove("rotate-180");
+    downloadBtn?.setAttribute("aria-expanded", "false");
+  }
+
+  downloadBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isExpanded = downloadBtn.getAttribute("aria-expanded") === "true";
+    if (isExpanded) {
+      closeDownloadMenu();
+    } else {
+      openDownloadMenu();
+    }
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener("click", (e) => {
+    const dropdown = document.getElementById("download-dropdown");
+    if (dropdown && !dropdown.contains(e.target as Node)) {
+      closeDownloadMenu();
+    }
+  });
+
+  // Close dropdown on escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeDownloadMenu();
+    }
+  });
+
   // Scroll Spy - highlight nav links based on visible section
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll("[data-nav-link]");
@@ -163,11 +322,11 @@ const navLinks = [
     const windowHeight = window.innerHeight;
     const documentHeight = document.documentElement.scrollHeight;
 
-    // Check if at top of page (Home)
+    // Check if at top of page (Home/Hero)
     if (scrollPosition < 200) {
       navLinks.forEach((link) => {
         const linkSection = link.getAttribute("data-nav-link");
-        if (linkSection === "") {
+        if (linkSection === "hero") {
           link.classList.add("nav-link-active");
         } else {
           link.classList.remove("nav-link-active");
