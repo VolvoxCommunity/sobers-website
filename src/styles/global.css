@@ -142,14 +142,14 @@ body {
   border-radius: 1rem;
   border-width: 1px;
   transition: all 0.3s;
-  background-color: rgba(248, 250, 252, 0.7);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background-color: rgba(248, 250, 252, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-color: var(--border-color);
 }
 
 .dark .card {
-  background-color: rgba(30, 41, 59, 0.6);
+  background-color: rgba(30, 41, 59, 0.4);
 }
 
 .card:hover {
