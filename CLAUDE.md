@@ -59,20 +59,24 @@ Pages include JSON-LD structured data for rich search results.
 
 ## Workflow Requirements
 
+**IMPORTANT: These requirements are MANDATORY and MUST be followed every single time without exception.**
+
 ### Validation on Changes
 
-After making any code changes, always run validation before committing:
+After making ANY code changes, you MUST run validation before committing:
 
 ```bash
 pnpm format && pnpm typecheck && pnpm build
 ```
 
-All three must pass before proceeding. Fix any errors before committing.
+All three MUST pass before proceeding. Fix any errors before committing. Never skip this step.
 
 ### Git Commit Strategy
 
-- **Commit after each task**: Create a commit when completing each discrete task or feature
-- **Push on full completion**: Push to remote only when the entire user request is complete
+These rules are NON-NEGOTIABLE:
+
+- **Commit after each task**: You MUST create a commit when completing each discrete task or feature
+- **Push on full completion**: You MUST push to remote when the entire user request is complete
 - **Commit message format**: Use conventional commits (e.g., `feat:`, `fix:`, `docs:`, `refactor:`)
 
 Example workflow:
