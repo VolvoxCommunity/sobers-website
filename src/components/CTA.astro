@@ -39,7 +39,7 @@ const playStoreUrl = "https://play.google.com/store/apps/details?id=com.volvox.s
     </p>
 
     <!-- App Store Badges -->
-    <div class="flex flex-wrap gap-4 justify-center mb-8">
+    <div class="flex flex-wrap gap-4 justify-center mb-8 items-center">
       <a
         href={appStoreUrl}
         target="_blank"
@@ -49,8 +49,7 @@ const playStoreUrl = "https://play.google.com/store/apps/details?id=com.volvox.s
         <img
           src="/app-store-badge.svg"
           alt="Download on the App Store"
-          width="160"
-          height="48"
+          class="h-[48px] w-auto"
           loading="lazy"
         />
       </a>
@@ -63,8 +62,7 @@ const playStoreUrl = "https://play.google.com/store/apps/details?id=com.volvox.s
         <img
           src="/google-play-badge.png"
           alt="Get it on Google Play"
-          width="180"
-          height="53"
+          class="h-[48px] w-auto"
           loading="lazy"
         />
       </a>
