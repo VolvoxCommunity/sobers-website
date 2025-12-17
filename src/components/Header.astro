@@ -1,5 +1,6 @@
 ---
 const navLinks = [
+  { href: "/", label: "Home" },
   { href: "/#features", label: "Features" },
   { href: "/#how-it-works", label: "How It Works" },
   { href: "/#faq", label: "FAQ" },
@@ -150,17 +151,62 @@ const navLinks = [
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll("[data-nav-link]");
 
-  function updateActiveNavLink() {
-    const scrollPosition = window.scrollY + 100; // Offset for fixed header
+  // Get section IDs that have corresponding nav links
+  const trackedSectionIds = new Set(
+    Array.from(navLinks)
+      .map((link) => link.getAttribute("data-nav-link"))
+      .filter(Boolean)
+  );
 
+  function updateActiveNavLink() {
+    const scrollPosition = window.scrollY + 150; // Offset for fixed header
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+
+    // Check if at top of page (Home)
+    if (scrollPosition < 200) {
+      navLinks.forEach((link) => {
+        const linkSection = link.getAttribute("data-nav-link");
+        if (linkSection === "") {
+          link.classList.add("nav-link-active");
+        } else {
+          link.classList.remove("nav-link-active");
+        }
+      });
+      return;
+    }
+
+    // Check if at bottom of page - activate last section
+    if (scrollPosition + windowHeight >= documentHeight - 100) {
+      const lastTrackedSection = Array.from(sections)
+        .filter((s) => trackedSectionIds.has(s.getAttribute("id")))
+        .pop();
+
+      if (lastTrackedSection) {
+        const lastSectionId = lastTrackedSection.getAttribute("id");
+        navLinks.forEach((link) => {
+          const linkSection = link.getAttribute("data-nav-link");
+          if (linkSection === lastSectionId) {
+            link.classList.add("nav-link-active");
+          } else {
+            link.classList.remove("nav-link-active");
+          }
+        });
+        return;
+      }
+    }
+
+    // Find the last section that we've scrolled past
     let currentSection = "";
 
     sections.forEach((section) => {
-      const sectionTop = (section as HTMLElement).offsetTop;
-      const sectionHeight = (section as HTMLElement).offsetHeight;
+      const sectionId = section.getAttribute("id");
+      if (!sectionId || !trackedSectionIds.has(sectionId)) return;
 
-      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-        currentSection = section.getAttribute("id") || "";
+      const sectionTop = (section as HTMLElement).offsetTop;
+
+      if (scrollPosition >= sectionTop) {
+        currentSection = sectionId;
       }
     });
 
