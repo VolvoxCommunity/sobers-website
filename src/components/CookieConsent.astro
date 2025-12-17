@@ -14,6 +14,101 @@
   const CAT_NECESSARY = "necessary";
   const CAT_ANALYTICS = "analytics";
 
+  // Available languages with native names
+  const LANGUAGES: Record<string, string> = {
+    en: "English",
+    es: "Español",
+    fr: "Français",
+    de: "Deutsch",
+    it: "Italiano",
+    pt: "Português",
+    nl: "Nederlands",
+    ja: "日本語",
+    zh: "中文",
+    ko: "한국어",
+    ar: "العربية",
+    pl: "Polski",
+    tr: "Türkçe",
+    sv: "Svenska",
+    ru: "Русский",
+  };
+
+  // Language selector labels (translated)
+  const LANGUAGE_LABELS: Record<string, string> = {
+    en: "Language",
+    es: "Idioma",
+    fr: "Langue",
+    de: "Sprache",
+    it: "Lingua",
+    pt: "Idioma",
+    nl: "Taal",
+    ja: "言語",
+    zh: "语言",
+    ko: "언어",
+    ar: "اللغة",
+    pl: "Język",
+    tr: "Dil",
+    sv: "Språk",
+    ru: "Язык",
+  };
+
+  /**
+   * Creates and injects the language selector into the preferences modal.
+   */
+  function injectLanguageSelector() {
+    const prefsModal = document.querySelector(".pm__body");
+    if (!prefsModal || document.getElementById("cc-language-selector")) return;
+
+    const currentLang = CookieConsent.getConfig("language").default;
+    const label = LANGUAGE_LABELS[currentLang] || "Language";
+
+    const selectorContainer = document.createElement("div");
+    selectorContainer.id = "cc-language-selector";
+    selectorContainer.className = "pm__section";
+    selectorContainer.innerHTML = `
+      <div class="pm__section-title-wrapper">
+        <h3 class="pm__section-title">${label}</h3>
+      </div>
+      <div class="pm__section-desc-wrapper">
+        <select id="cc-lang-select" class="cc-lang-select">
+          ${Object.entries(LANGUAGES)
+            .map(
+              ([code, name]) =>
+                `<option value="${code}" ${code === currentLang ? "selected" : ""}>${name}</option>`
+            )
+            .join("")}
+        </select>
+      </div>
+    `;
+
+    // Insert at the top of the modal body
+    prefsModal.insertBefore(selectorContainer, prefsModal.firstChild);
+
+    // Add change event listener
+    const select = document.getElementById("cc-lang-select") as HTMLSelectElement;
+    select?.addEventListener("change", (e) => {
+      const newLang = (e.target as HTMLSelectElement).value;
+      CookieConsent.setLanguage(newLang);
+      // Re-inject selector after language change (modal gets rebuilt)
+      setTimeout(injectLanguageSelector, 50);
+    });
+  }
+
+  // Observe for preferences modal opening
+  const modalObserver = new MutationObserver((mutations) => {
+    for (const mutation of mutations) {
+      if (mutation.type === "childList") {
+        const prefsModal = document.querySelector(".pm__body");
+        if (prefsModal && !document.getElementById("cc-language-selector")) {
+          injectLanguageSelector();
+        }
+      }
+    }
+  });
+
+  // Start observing after DOM is ready
+  modalObserver.observe(document.body, { childList: true, subtree: true });
+
   // Google Consent Mode service
   const SERVICE_ANALYTICS_STORAGE = "analytics_storage";
 
