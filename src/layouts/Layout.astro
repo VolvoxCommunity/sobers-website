@@ -97,11 +97,12 @@ const fullCanonicalUrl = canonicalUrl ? `${siteUrl}${canonicalUrl}` : Astro.url.
     <script>
       import confetti from "canvas-confetti";
 
-      // Target all download/store links
+      // Target all download/store links and elements with data-confetti
       const downloadSelectors = [
         'a[href*="apps.apple.com"]',
         'a[href*="play.google.com"]',
         'a[href*="app.sobers.app"]',
+        "[data-confetti]",
       ];
 
       const downloadLinks = document.querySelectorAll(downloadSelectors.join(", "));
