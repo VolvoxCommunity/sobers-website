@@ -141,7 +141,10 @@ body {
 .card {
   border-radius: 1rem;
   border-width: 1px;
-  transition: all 0.3s;
+  transition:
+    transform 0.2s ease-out,
+    border-color 0.2s ease-out,
+    box-shadow 0.2s ease-out;
   background-color: rgba(248, 250, 252, 0.5);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -155,6 +158,22 @@ body {
 .card:hover {
   border-color: rgba(0, 122, 255, 0.5);
   box-shadow: 0 0 30px rgba(0, 122, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.card:active {
+  transform: translateY(0) scale(0.99);
+}
+
+/* FAQ accordion button styles */
+[data-faq-trigger] {
+  transition:
+    background-color 0.15s ease-out,
+    transform 0.1s ease-out;
+}
+
+[data-faq-trigger]:active {
+  transform: scale(0.995);
 }
 
 /* Button styles */
@@ -166,7 +185,19 @@ body {
   padding: 0.75rem 1.5rem;
   border-radius: 0.75rem;
   font-weight: 500;
-  transition: all 0.2s;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease-out,
+    background-color 0.15s ease-out,
+    box-shadow 0.15s ease-out;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
 }
 
 .btn-primary {
@@ -176,6 +207,11 @@ body {
 
 .btn-primary:hover {
   background-color: var(--color-primary-hover);
+  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+}
+
+.btn-primary:active {
+  box-shadow: 0 2px 6px rgba(0, 122, 255, 0.2);
 }
 
 .btn-secondary {
@@ -186,6 +222,27 @@ body {
 
 .btn-secondary:hover {
   background-color: var(--surface-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:active {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Interactive link styles */
+a {
+  transition: color 0.15s ease-out;
+}
+
+a:not(.btn):hover {
+  color: var(--color-primary);
+}
+
+/* Interactive element feedback */
+[role="button"],
+button,
+summary {
+  cursor: pointer;
 }
 
 /* Focus styles for accessibility */
