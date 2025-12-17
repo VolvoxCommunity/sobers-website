@@ -66,6 +66,20 @@ const fullCanonicalUrl = canonicalUrl ? `${siteUrl}${canonicalUrl}` : Astro.url.
     <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
 
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J4M348DW6C"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-J4M348DW6C");
+    </script>
+
+    <!-- Vercel Analytics -->
+    <script defer src="/_vercel/insights/script.js"></script>
+
     <!-- Theme Script (prevent flash) -->
     <script is:inline>
       (function () {
