@@ -250,6 +250,27 @@ body {
   box-shadow: 0 4px 12px rgba(0, 122, 255, 0.15);
 }
 
+/* Social icon styles (GitHub, Discord) */
+.social-icon {
+  display: inline-block;
+  transition:
+    color 0.15s ease-out,
+    transform 0.3s ease-out;
+}
+
+.social-icon:hover {
+  transform: rotate(15deg) scale(1.1);
+}
+
+/* Theme toggle icon animation */
+.theme-icon {
+  transition: transform 0.3s ease-out;
+}
+
+.theme-toggle-btn:active .theme-icon {
+  transform: rotate(180deg);
+}
+
 /* Interactive link styles */
 a {
   transition: color 0.15s ease-out;
