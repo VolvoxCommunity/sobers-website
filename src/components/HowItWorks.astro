@@ -1,0 +1,79 @@
+---
+const steps = [
+  {
+    number: "01",
+    title: "Download & Sign Up",
+    description: "Get the app free on iOS or Android. Create your account in seconds.",
+    icon: "download",
+  },
+  {
+    number: "02",
+    title: "Connect with Your Sponsor",
+    description: "Enter their unique invite code to pair securely.",
+    icon: "users",
+  },
+  {
+    number: "03",
+    title: "Start Your Journey",
+    description: "Track sobriety, complete tasks, celebrate milestones.",
+    icon: "flag",
+  },
+];
+
+const icons: Record<string, string> = {
+  download: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />`,
+  users: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />`,
+  flag: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />`,
+};
+---
+
+<section id="how-it-works" class="py-20 lg:py-32 bg-surface">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold text-primary-theme mb-4">
+        Get started in
+        <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          three simple steps
+        </span>
+      </h2>
+      <p class="text-lg text-secondary-theme max-w-2xl mx-auto">
+        Recovery is hard enough. Getting set up shouldn't be.
+      </p>
+    </div>
+
+    <!-- Steps -->
+    <div class="grid md:grid-cols-3 gap-8 lg:gap-12 relative">
+      <!-- Connection Line (Desktop) -->
+      <div
+        class="hidden md:block absolute top-16 left-1/6 right-1/6 h-0.5 bg-gradient-to-r from-primary via-secondary to-primary opacity-20"
+      >
+      </div>
+
+      {
+        steps.map((step, index) => (
+          <div class="relative text-center">
+            {/* Step Number Circle */}
+            <div class="relative z-10 mx-auto w-20 h-20 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-6 shadow-lg">
+              <svg
+                class="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                set:html={icons[step.icon]}
+              />
+            </div>
+
+            {/* Step Number Badge */}
+            <div class="absolute top-0 right-1/2 translate-x-12 -translate-y-2 w-8 h-8 rounded-full bg-surface border-2 border-primary flex items-center justify-center text-xs font-bold text-primary">
+              {step.number}
+            </div>
+
+            <h3 class="text-xl font-semibold text-primary-theme mb-3">{step.title}</h3>
+            <p class="text-secondary-theme max-w-xs mx-auto">{step.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

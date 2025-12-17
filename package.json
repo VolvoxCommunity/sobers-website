@@ -1,0 +1,45 @@
+{
+  "name": "sobers-website",
+  "version": "1.0",
+  "packageManager": "pnpm@10.26.0",
+  "description": "Website landing for Sobers - Recovery Accountability App",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "astro check"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VolvoxCommunity/sobers-website.git"
+  },
+  "keywords": [
+    "sobriety",
+    "recovery",
+    "12-step",
+    "accountability",
+    "sponsor",
+    "sponsee"
+  ],
+  "author": "Volvox",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VolvoxCommunity/sobers-website/issues"
+  },
+  "homepage": "https://github.com/VolvoxCommunity/sobers-website#readme",
+  "dependencies": {
+    "@astrojs/sitemap": "^3.6.0",
+    "@tailwindcss/vite": "^4.1.18",
+    "astro": "^5.16.6"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.6",
+    "prettier": "^3.7.4",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^5.9.3"
+  }
+}

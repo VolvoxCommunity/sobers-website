@@ -1,0 +1,222 @@
+/* JetBrains Mono Font - loaded in Layout.astro via link tag */
+@import "tailwindcss";
+
+/* Custom Theme Configuration */
+@theme {
+  /* Brand Colors */
+  --color-primary: #007aff;
+  --color-primary-hover: #0066d6;
+  --color-secondary: #af58da;
+  --color-secondary-hover: #9a45c5;
+
+  /* Dark Mode Colors */
+  --color-dark-bg: #0f172a;
+  --color-dark-surface: #1e293b;
+  --color-dark-border: #334155;
+
+  /* Light Mode Colors */
+  --color-light-bg: #ffffff;
+  --color-light-surface: #f8fafc;
+  --color-light-border: #e2e8f0;
+
+  /* Font Family */
+  --font-mono:
+    "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono",
+    monospace;
+
+  /* Custom Shadows */
+  --shadow-glow-primary: 0 0 60px rgba(0, 122, 255, 0.15);
+  --shadow-glow-secondary: 0 0 60px rgba(175, 88, 218, 0.15);
+
+  /* Animations */
+  --animate-fade-in: fade-in 0.5s ease-out;
+  --animate-slide-up: slide-up 0.6s ease-out;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+}
+
+/* Light mode (default) */
+:root {
+  --bg-color: var(--color-light-bg);
+  --surface-color: var(--color-light-surface);
+  --border-color: var(--color-light-border);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+}
+
+/* Dark mode */
+.dark {
+  --bg-color: var(--color-dark-bg);
+  --surface-color: var(--color-dark-surface);
+  --border-color: var(--color-dark-border);
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+}
+
+/* Custom utility classes */
+@utility bg-theme {
+  background-color: var(--bg-color);
+}
+
+@utility bg-surface {
+  background-color: var(--surface-color);
+}
+
+@utility border-theme {
+  border-color: var(--border-color);
+}
+
+@utility text-primary-theme {
+  color: var(--text-primary);
+}
+
+@utility text-secondary-theme {
+  color: var(--text-secondary);
+}
+
+@utility text-muted-theme {
+  color: var(--text-muted);
+}
+
+@utility gradient-bg {
+  background: linear-gradient(135deg, var(--bg-color) 0%, var(--surface-color) 100%);
+}
+
+@utility glow-primary {
+  box-shadow: var(--shadow-glow-primary);
+}
+
+@utility glow-secondary {
+  box-shadow: var(--shadow-glow-secondary);
+}
+
+@utility backdrop-blur-header {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Base Styles */
+html {
+  font-family: var(--font-mono);
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Card styles */
+.card {
+  border-radius: 1rem;
+  border-width: 1px;
+  transition: all 0.3s;
+  background-color: var(--surface-color);
+  border-color: var(--border-color);
+}
+
+.card:hover {
+  border-color: rgba(0, 122, 255, 0.5);
+  box-shadow: 0 0 30px rgba(0, 122, 255, 0.1);
+}
+
+/* Button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.btn-secondary {
+  border-width: 1px;
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--surface-color);
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -2.5rem;
+  left: 0;
+  background-color: var(--color-primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  z-index: 50;
+  transition: all 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Dark mode gradient override */
+.dark .gradient-bg {
+  background: linear-gradient(135deg, #0f172a 0%, #1a1f35 50%, #0f172a 100%);
+}

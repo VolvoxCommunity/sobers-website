@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 155 42" width="155" height="42">
+  <rect width="155" height="42" rx="6" fill="#000"/>
+  <rect x="0.5" y="0.5" width="154" height="41" rx="5.5" fill="none" stroke="#A6A6A6" stroke-width="1"/>
+
+  <!-- Google Play Logo -->
+  <g transform="translate(10, 8)">
+    <path fill="#EA4335" d="M7 2l8 14-8 14-7-14z"/>
+    <path fill="#FBBC04" d="M0 16L7 2l5 8-5 6z"/>
+    <path fill="#34A853" d="M7 30l-7-14 5-6 5 8z"/>
+    <path fill="#4285F4" d="M15 16l-8-14v28l8-14z"/>
+  </g>
+
+  <!-- Text -->
+  <text x="38" y="14" font-family="system-ui, -apple-system, sans-serif" font-size="7" fill="#fff" text-transform="uppercase">GET IT ON</text>
+  <text x="38" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#fff">Google Play</text>
+</svg>

@@ -1,0 +1,74 @@
+---
+const screenshots = [
+  {
+    src: "/screenshots/dashboard.png",
+    alt: "Sobers dashboard showing sobriety counter and daily check-in",
+    title: "Dashboard",
+  },
+  {
+    src: "/screenshots/timeline.png",
+    alt: "Journey timeline showing milestones and progress",
+    title: "Timeline",
+  },
+  {
+    src: "/screenshots/tasks.png",
+    alt: "Task list with sponsor-assigned activities",
+    title: "Tasks",
+  },
+  {
+    src: "/screenshots/steps.png",
+    alt: "12-step progress tracker",
+    title: "12 Steps",
+  },
+];
+---
+
+<section class="py-20 lg:py-32 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold text-primary-theme mb-4">
+        See
+        <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          Sobers in action
+        </span>
+      </h2>
+      <p class="text-lg text-secondary-theme max-w-2xl mx-auto">
+        A clean, intuitive interface designed to support your recovery journey without getting in
+        the way.
+      </p>
+    </div>
+
+    <!-- Screenshots Grid -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+      {
+        screenshots.map((screenshot, index) => (
+          <div class="group relative" style={`animation-delay: ${index * 100}ms`}>
+            {/* Device Frame */}
+            <div class="relative bg-surface border border-theme rounded-2xl p-2 shadow-xl group-hover:shadow-2xl group-hover:border-primary/50 transition-all duration-300">
+              {/* Glow on hover */}
+              <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+
+              {/* Screenshot */}
+              <div class="relative bg-dark-bg rounded-xl overflow-hidden">
+                <img
+                  src={screenshot.src}
+                  alt={screenshot.alt}
+                  width="200"
+                  height="400"
+                  class="w-full h-auto"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+
+            {/* Label */}
+            <p class="mt-3 text-center text-sm font-medium text-secondary-theme group-hover:text-primary transition-colors">
+              {screenshot.title}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

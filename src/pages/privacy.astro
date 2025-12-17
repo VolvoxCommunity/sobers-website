@@ -1,0 +1,273 @@
+---
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout
+  title="Privacy Policy - Sobers"
+  description="Privacy Policy for Sobers recovery accountability app. Learn how we protect your data and respect your privacy."
+  canonicalUrl="/privacy"
+>
+  <article class="pt-32 pb-20">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header class="mb-12">
+        <h1 class="text-4xl font-bold text-primary-theme mb-4">Privacy Policy</h1>
+        <p class="text-secondary-theme">Last updated: December 2025</p>
+      </header>
+
+      <div class="prose prose-invert max-w-none space-y-8">
+        <section>
+          <h2 class="text-2xl font-semibold text-primary-theme mb-4">Introduction</h2>
+          <p class="text-secondary-theme">
+            Sobers ("we," "our," or "us"), operated by Volvox, is committed to protecting your
+            privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your
+            information when you use our mobile application and related services (collectively, the
+            "Service").
+          </p>
+          <p class="text-secondary-theme mt-4">
+            We understand that recovery is a deeply personal journey. That's why we've built Sobers
+            with privacy as a foundational principle. Your sobriety data, personal reflections, and
+            recovery progress are treated with the highest level of care and protection.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-primary-theme mb-4">Information We Collect</h2>
+
+          <h3 class="text-xl font-medium text-primary-theme mb-2 mt-6">Account Information</h3>
+          <ul class="list-disc list-inside text-secondary-theme space-y-2">
+            <li>Email address (required for account creation)</li>
+            <li>Display name (2-30 characters)</li>
+            <li>Profile picture (optional)</li>
+            <li>Phone number (optional)</li>
+            <li>Bio/description (optional)</li>
+            <li>Timezone preference</li>
+          </ul>
+
+          <h3 class="text-xl font-medium text-primary-theme mb-2 mt-6">Recovery Data</h3>
+          <ul class="list-disc list-inside text-secondary-theme space-y-2">
+            <li>Sobriety start date</li>
+            <li>Slip-up records (dates and optional personal notes)</li>
+            <li>12-step progress and completion dates</li>
+            <li>Personal reflections and step notes</li>
+          </ul>
+
+          <h3 class="text-xl font-medium text-primary-theme mb-2 mt-6">Activity Data</h3>
+          <ul class="list-disc list-inside text-secondary-theme space-y-2">
+            <li>Tasks assigned to or by you</li>
+            <li>Task completion notes and status</li>
+            <li>Messages exchanged with sponsors/sponsees</li>
+            <li>Connection invitations and relationship history</li>
+          </ul>
+
+          <h3 class="text-xl font-medium text-primary-theme mb-2 mt-6">
+            Automatically Collected Information
+          </h3>
+          <ul class="list-disc list-inside text-secondary-theme space-y-2">
+            <li>Device type and operating system</li>
+            <li>App version and usage patterns (anonymized)</li>
+            <li>Crash reports and error logs (with sensitive data automatically removed)</li>
+            <li>General engagement metrics (e.g., features used, session duration)</li>
+          </ul>
+
+          <h3 class="text-xl font-medium text-primary-theme mb-2 mt-6">What We Don't Collect</h3>
+          <ul class="list-disc list-inside text-secondary-theme space-y-2">
+            <li>Location data - we never track your whereabouts</li>
+            <li>Health app data - no HealthKit or similar integrations</li>
+            <li>Biometric data - no fingerprint or facial recognition data stored</li>
+            <li>Payment information - the app is completely free</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-primary-theme mb-4">Authentication Methods</h2>
+          <p class="text-secondary-theme">You can create an account using:</p>
+          <ul class="list-disc list-inside text-secondary-theme space-y-2 mt-4">
+            <li>Email and password</li>
+            <li>Google Sign-In</li>
+            <li>Apple Sign-In (iOS)</li>
+          </ul>
+          <p class="text-secondary-theme mt-4">
+            When using third-party sign-in, we only receive your email address and, if you permit,
+            your name. We never receive or store your third-party account password.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-primary-theme mb-4">
+            How We Use Your Information
+          </h2>
+          <ul class="list-disc list-inside text-secondary-theme space-y-2">
+            <li>To provide and maintain the Service</li>
+            <li>To enable sponsor-sponsee connections via invite codes</li>
+            <li>To sync your data securely across devices</li>
+            <li>To track your sobriety milestones and progress</li>
+            <li>To facilitate task assignments and messaging</li>
+            <li>To improve app stability and fix bugs</li>
+            <li>
+              To understand general usage patterns (using privacy-preserving analytics that bucket
+              data rather than expose exact values)
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-primary-theme mb-4">Third-Party Services</h2>
+          <p class="text-secondary-theme">
+            We use trusted third-party services to operate Sobers. These providers are bound by
+            confidentiality agreements and only process data as necessary:
+          </p>
+
+          <h3 class="text-xl font-medium text-primary-theme mb-2 mt-6">Supabase (Database)</h3>
+          <p class="text-secondary-theme">
+            Stores your account data, recovery progress, tasks, and messages securely with row-level
+            security policies ensuring you can only access your own data.
+          </p>
+
+          <h3 class="text-xl font-medium text-primary-theme mb-2 mt-6">
+            Firebase Analytics (Usage Analytics)
+          </h3>
+          <p class="text-secondary-theme">
+            Helps us understand how the app is used. We use privacy-preserving practices such as
+            bucketed values (e.g., "30-90 days sober" rather than exact dates) to protect your
+            sensitive information.
+          </p>
+
+          <h3 class="text-xl font-medium text-primary-theme mb-2 mt-6">
+            Sentry (Error Monitoring)
+          </h3>
+          <p class="text-secondary-theme">
+            Helps us identify and fix crashes. All sensitive data (sobriety dates, messages, notes,
+            email addresses, names) is automatically scrubbed before any error report is sent.
+          </p>
+
+          <h3 class="text-xl font-medium text-primary-theme mb-2 mt-6">Expo (App Updates)</h3>
+          <p class="text-secondary-theme">
+            Enables us to deliver bug fixes and improvements without requiring app store updates.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-primary-theme mb-4">Data Sharing</h2>
+          <p class="text-secondary-theme">
+            <strong class="text-primary-theme">We never sell your data.</strong> Your sobriety information,
+            notes, and personal details are only shared with:
+          </p>
+          <ul class="list-disc list-inside text-secondary-theme space-y-2 mt-4">
+            <li>
+              <strong class="text-primary-theme">Your connected sponsor or sponsee:</strong> Only task
+              assignments, messages you send them, and your sobriety milestone information
+            </li>
+            <li>
+              <strong class="text-primary-theme">Service providers:</strong> As described above, under
+              strict data processing agreements
+            </li>
+            <li>
+              <strong class="text-primary-theme">Legal requirements:</strong> Only when required by law,
+              such as a valid court order
+            </li>
+          </ul>
+          <p class="text-secondary-theme mt-4">
+            Your personal notes, step reflections, and slip-up details remain private and are never
+            shared with anyone, including your sponsor.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-primary-theme mb-4">Data Security</h2>
+          <p class="text-secondary-theme">We implement robust security measures including:</p>
+          <ul class="list-disc list-inside text-secondary-theme space-y-2 mt-4">
+            <li>HTTPS encryption for all data transmission</li>
+            <li>
+              Secure token storage using platform-native secure storage (iOS Keychain, Android
+              Keystore)
+            </li>
+            <li>Row-level security policies ensuring users can only access their own data</li>
+            <li>Automatic scrubbing of sensitive data from error reports and analytics</li>
+            <li>Regular security updates and monitoring</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-primary-theme mb-4">Data Retention</h2>
+          <p class="text-secondary-theme">
+            Your data is retained as long as your account is active. When you delete your account:
+          </p>
+          <ul class="list-disc list-inside text-secondary-theme space-y-2 mt-4">
+            <li>All your personal data is permanently deleted</li>
+            <li>Your recovery journey, tasks, messages, and connections are removed</li>
+            <li>This deletion is irreversible and cannot be undone</li>
+            <li>Anonymized analytics data may be retained for service improvement</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-primary-theme mb-4">Your Rights</h2>
+          <p class="text-secondary-theme">You have the right to:</p>
+          <ul class="list-disc list-inside text-secondary-theme space-y-2 mt-4">
+            <li>
+              <strong class="text-primary-theme">Access:</strong> View all your personal data within the
+              app
+            </li>
+            <li>
+              <strong class="text-primary-theme">Correction:</strong> Update your profile information
+              at any time
+            </li>
+            <li>
+              <strong class="text-primary-theme">Deletion:</strong> Permanently delete your account and
+              all associated data via Settings
+            </li>
+            <li>
+              <strong class="text-primary-theme">Disconnect:</strong> End any sponsor/sponsee relationship
+              at any time
+            </li>
+          </ul>
+          <p class="text-secondary-theme mt-4">
+            To exercise these rights or for any privacy-related requests, contact us at the address
+            below.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-primary-theme mb-4">Children's Privacy</h2>
+          <p class="text-secondary-theme">
+            Sobers is not intended for children under 13 years of age. We do not knowingly collect
+            personal information from children under 13. If you believe a child has provided us with
+            personal information, please contact us immediately.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-primary-theme mb-4">International Users</h2>
+          <p class="text-secondary-theme">
+            If you are accessing the Service from outside the United States, please be aware that
+            your information may be transferred to, stored, and processed in the United States where
+            our servers are located. By using the Service, you consent to this transfer.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-primary-theme mb-4">Changes to This Policy</h2>
+          <p class="text-secondary-theme">
+            We may update this Privacy Policy from time to time. We will notify you of significant
+            changes through the App or by other means. The "Last updated" date at the top of this
+            policy indicates when it was last revised. Continued use of the Service after changes
+            constitutes acceptance of the updated policy.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-semibold text-primary-theme mb-4">Contact Us</h2>
+          <p class="text-secondary-theme">
+            If you have any questions about this Privacy Policy or our data practices, please
+            contact us at:
+          </p>
+          <p class="text-primary mt-4">
+            <a href="mailto:support@volvoxdev.com" class="hover:underline">
+              support@volvoxdev.com
+            </a>
+          </p>
+        </section>
+      </div>
+    </div>
+  </article>
+</Layout>

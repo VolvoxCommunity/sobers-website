@@ -1,0 +1,118 @@
+---
+const faqs = [
+  {
+    question: "Is Sobers free?",
+    answer:
+      "Completely free. No ads, no premium tiers, no paywalls. Recovery tools should be accessible to everyone.",
+  },
+  {
+    question: "How do I connect with my sponsor?",
+    answer:
+      "Your sponsor generates a unique 8-character invite code from their profile. Enter it in your app to connect instantly.",
+  },
+  {
+    question: "Is my data private?",
+    answer:
+      "Your sobriety data and personal notes are only visible to you and your connected sponsor. We use bank-level encryption and never share your information.",
+  },
+  {
+    question: "Can I be both a sponsor and a sponsee?",
+    answer:
+      "Absolutely. No role restrictions—you can guide others while receiving guidance yourself.",
+  },
+  {
+    question: "What happens if I relapse?",
+    answer:
+      "Recovery isn't a straight line. Document relapses honestly—your counter resets but your entire journey history is preserved. No shame, no judgment.",
+  },
+  {
+    question: "What 12-step programs does the app support?",
+    answer:
+      "All of them. AA, NA, CA, OA, GA—if it has 12 steps and accountability partners, we've got you covered.",
+  },
+];
+---
+
+<section id="faq" class="py-20 lg:py-32 bg-surface">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl font-bold text-primary-theme mb-4">
+        Frequently asked
+        <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          questions
+        </span>
+      </h2>
+      <p class="text-lg text-secondary-theme">Got questions? We've got answers.</p>
+    </div>
+
+    <!-- FAQ Accordion -->
+    <div class="space-y-4">
+      {
+        faqs.map((faq, index) => (
+          <div class="card overflow-hidden" data-faq-item>
+            <button
+              type="button"
+              class="w-full px-6 py-4 text-left flex items-center justify-between gap-4 hover:bg-surface/50 transition-colors"
+              aria-expanded="false"
+              data-faq-trigger
+            >
+              <span class="font-medium text-primary-theme">{faq.question}</span>
+              <svg
+                class="w-5 h-5 text-secondary-theme shrink-0 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                data-faq-icon
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div class="px-6 overflow-hidden transition-all duration-300 max-h-0" data-faq-content>
+              <p class="pb-4 text-secondary-theme">{faq.answer}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  const faqItems = document.querySelectorAll("[data-faq-item]");
+
+  faqItems.forEach((item) => {
+    const trigger = item.querySelector("[data-faq-trigger]");
+    const content = item.querySelector("[data-faq-content]") as HTMLElement;
+    const icon = item.querySelector("[data-faq-icon]");
+
+    trigger?.addEventListener("click", () => {
+      const isExpanded = trigger.getAttribute("aria-expanded") === "true";
+
+      // Close all other items
+      faqItems.forEach((otherItem) => {
+        if (otherItem !== item) {
+          const otherTrigger = otherItem.querySelector("[data-faq-trigger]");
+          const otherContent = otherItem.querySelector("[data-faq-content]") as HTMLElement;
+          const otherIcon = otherItem.querySelector("[data-faq-icon]");
+
+          otherTrigger?.setAttribute("aria-expanded", "false");
+          if (otherContent) otherContent.style.maxHeight = "0";
+          otherIcon?.classList.remove("rotate-180");
+        }
+      });
+
+      // Toggle current item
+      trigger.setAttribute("aria-expanded", String(!isExpanded));
+      if (content) {
+        content.style.maxHeight = isExpanded ? "0" : `${content.scrollHeight}px`;
+      }
+      icon?.classList.toggle("rotate-180", !isExpanded);
+    });
+  });
+</script>
