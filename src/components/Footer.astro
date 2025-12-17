@@ -9,6 +9,7 @@ const footerLinks = {
     { href: "/privacy", label: "Privacy Policy" },
     { href: "/terms", label: "Terms of Service" },
     { href: "/support", label: "Support" },
+    { href: "#", label: "Cookie Settings", onClick: "showCookiePreferences" },
   ],
   social: [
     { href: "https://github.com/VolvoxCommunity", label: "GitHub", icon: "github" },
@@ -91,12 +92,22 @@ const footerLinks = {
           {
             footerLinks.legal.map((link) => (
               <li>
-                <a
-                  href={link.href}
-                  class="text-sm text-secondary-theme hover:text-primary transition-colors"
-                >
-                  {link.label}
-                </a>
+                {"onClick" in link ? (
+                  <button
+                    type="button"
+                    onclick={`window.${link.onClick}?.()`}
+                    class="text-sm text-secondary-theme hover:text-primary transition-colors cursor-pointer"
+                  >
+                    {link.label}
+                  </button>
+                ) : (
+                  <a
+                    href={link.href}
+                    class="text-sm text-secondary-theme hover:text-primary transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                )}
               </li>
             ))
           }

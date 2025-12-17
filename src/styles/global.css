@@ -220,3 +220,74 @@ body {
 .dark .gradient-bg {
   background: linear-gradient(135deg, #0f172a 0%, #1a1f35 50%, #0f172a 100%);
 }
+
+/* Cookie Consent Theme Overrides */
+:root {
+  --cc-bg: var(--color-light-surface);
+  --cc-text: var(--text-primary);
+  --cc-border-radius: 0.75rem;
+  --cc-btn-primary-bg: var(--color-primary);
+  --cc-btn-primary-text: #ffffff;
+  --cc-btn-primary-hover-bg: var(--color-primary-hover);
+  --cc-btn-secondary-bg: transparent;
+  --cc-btn-secondary-text: var(--text-primary);
+  --cc-btn-secondary-hover-bg: var(--color-light-surface);
+  --cc-btn-secondary-border-color: var(--color-light-border);
+  --cc-toggle-bg-off: var(--color-light-border);
+  --cc-toggle-bg-on: var(--color-primary);
+  --cc-toggle-bg-readonly: #94a3b8;
+  --cc-toggle-knob-bg: #ffffff;
+  --cc-cookie-category-block-bg: var(--color-light-bg);
+  --cc-cookie-category-block-bg-hover: var(--color-light-surface);
+  --cc-section-border: var(--color-light-border);
+  --cc-overlay-bg: rgba(0, 0, 0, 0.5);
+  --cc-footer-bg: var(--color-light-bg);
+  --cc-footer-text: var(--text-secondary);
+  --cc-footer-border-color: var(--color-light-border);
+}
+
+.dark {
+  --cc-bg: var(--color-dark-surface);
+  --cc-text: var(--text-primary);
+  --cc-btn-secondary-hover-bg: var(--color-dark-bg);
+  --cc-btn-secondary-border-color: var(--color-dark-border);
+  --cc-toggle-bg-off: var(--color-dark-border);
+  --cc-cookie-category-block-bg: var(--color-dark-bg);
+  --cc-cookie-category-block-bg-hover: var(--color-dark-surface);
+  --cc-section-border: var(--color-dark-border);
+  --cc-footer-bg: var(--color-dark-bg);
+  --cc-footer-text: var(--text-secondary);
+  --cc-footer-border-color: var(--color-dark-border);
+}
+
+/* Cookie consent modal customizations */
+#cc-main {
+  font-family: var(--font-mono);
+}
+
+#cc-main .cm,
+#cc-main .pm {
+  border: 1px solid var(--cc-section-border);
+}
+
+#cc-main .cm__btn,
+#cc-main .pm__btn {
+  border-radius: 0.5rem;
+  font-weight: 500;
+}
+
+#cc-main .cm__footer,
+#cc-main .pm__footer {
+  border-top: 1px solid var(--cc-section-border);
+}
+
+#cc-main .cm__footer a,
+#cc-main .pm__footer a {
+  color: var(--cc-footer-text);
+  text-decoration: none;
+}
+
+#cc-main .cm__footer a:hover,
+#cc-main .pm__footer a:hover {
+  color: var(--color-primary);
+}
