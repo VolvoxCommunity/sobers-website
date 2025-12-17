@@ -1,6 +1,9 @@
 /* JetBrains Mono Font - loaded in Layout.astro via link tag */
 @import "tailwindcss";
 
+/* Enable class-based dark mode for Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* Custom Theme Configuration */
 @theme {
   /* Brand Colors */
