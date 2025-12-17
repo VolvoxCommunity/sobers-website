@@ -56,3 +56,28 @@ interface Props {
 ```
 
 Pages include JSON-LD structured data for rich search results.
+
+## Workflow Requirements
+
+### Validation on Changes
+
+After making any code changes, always run validation before committing:
+
+```bash
+pnpm format && pnpm typecheck && pnpm build
+```
+
+All three must pass before proceeding. Fix any errors before committing.
+
+### Git Commit Strategy
+
+- **Commit after each task**: Create a commit when completing each discrete task or feature
+- **Push on full completion**: Push to remote only when the entire user request is complete
+- **Commit message format**: Use conventional commits (e.g., `feat:`, `fix:`, `docs:`, `refactor:`)
+
+Example workflow:
+
+1. Complete task 1 → validate → commit
+2. Complete task 2 → validate → commit
+3. Complete task 3 → validate → commit
+4. All tasks done → push to remote
