@@ -33,6 +33,7 @@
   "homepage": "https://github.com/VolvoxCommunity/sobers-website#readme",
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",
+    "@fontsource/jetbrains-mono": "^5.2.8",
     "@tailwindcss/vite": "^4.1.18",
     "@vercel/analytics": "^1.6.1",
     "astro": "^5.16.6",
