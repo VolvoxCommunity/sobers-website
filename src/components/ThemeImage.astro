@@ -1,0 +1,48 @@
+---
+interface Props {
+  /** Path to the light mode image */
+  lightSrc: string;
+  /** Path to the dark mode image */
+  darkSrc: string;
+  /** Alt text for accessibility */
+  alt: string;
+  /** Optional CSS class to apply to both images */
+  class?: string;
+  /** Image width */
+  width?: number;
+  /** Image height */
+  height?: number;
+  /** Loading strategy */
+  loading?: "lazy" | "eager";
+}
+
+const {
+  lightSrc,
+  darkSrc,
+  alt,
+  class: className = "",
+  width,
+  height,
+  loading = "lazy",
+} = Astro.props;
+---
+
+{/* Light mode image - visible by default, hidden in dark mode */}
+<img
+  src={lightSrc}
+  alt={alt}
+  class:list={["light-only", className]}
+  width={width}
+  height={height}
+  loading={loading}
+/>
+
+{/* Dark mode image - hidden by default, visible in dark mode */}
+<img
+  src={darkSrc}
+  alt={alt}
+  class:list={["dark-only", className]}
+  width={width}
+  height={height}
+  loading={loading}
+/>
