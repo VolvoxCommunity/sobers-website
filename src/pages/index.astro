@@ -6,6 +6,7 @@ import HowItWorks from "@/components/HowItWorks.astro";
 import Screenshots from "@/components/Screenshots.astro";
 import FAQ from "@/components/FAQ.astro";
 import CTA from "@/components/CTA.astro";
+import { APP_STORE_URL, PLAY_STORE_URL, VOLVOX_URL } from "@/constants/urls";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -26,14 +27,11 @@ const jsonLd = {
     ratingValue: "4.8",
     ratingCount: "100",
   },
-  downloadUrl: [
-    "https://apps.apple.com/us/app/sobriety-waypoint/id6755614815",
-    "https://play.google.com/store/apps/details?id=com.volvox.sobrietywaypoint",
-  ],
+  downloadUrl: [APP_STORE_URL, PLAY_STORE_URL],
   author: {
     "@type": "Organization",
     name: "Volvox",
-    url: "https://volvoxdev.com",
+    url: VOLVOX_URL,
   },
 };
 ---

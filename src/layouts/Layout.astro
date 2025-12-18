@@ -9,6 +9,7 @@ import Footer from "@/components/Footer.astro";
 import AnimatedBackground from "@/components/AnimatedBackground.astro";
 import CookieConsent from "@/components/CookieConsent.astro";
 import Analytics from "@vercel/analytics/astro";
+import { SITE_URL } from "@/constants/urls";
 
 interface Props {
   title: string;
@@ -24,7 +25,7 @@ const {
   canonicalUrl,
 } = Astro.props;
 
-const siteUrl = "https://sobers.app";
+const siteUrl = SITE_URL;
 const fullCanonicalUrl = canonicalUrl ? `${siteUrl}${canonicalUrl}` : Astro.url.href;
 ---
 

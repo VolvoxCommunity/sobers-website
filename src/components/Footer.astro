@@ -1,4 +1,6 @@
 ---
+import { GITHUB_URL, DISCORD_URL, VOLVOX_URL } from "@/constants/urls";
+
 const footerLinks = {
   product: [
     { href: "/#features", label: "Features" },
@@ -12,10 +14,12 @@ const footerLinks = {
     { href: "#", label: "Cookie Settings", onClick: "showCookiePreferences" },
   ],
   social: [
-    { href: "https://github.com/VolvoxCommunity/Sobers", label: "GitHub", icon: "github" },
-    { href: "https://discord.gg/8ahXACdamN", label: "Discord", icon: "discord" },
+    { href: GITHUB_URL, label: "GitHub", icon: "github" },
+    { href: DISCORD_URL, label: "Discord", icon: "discord" },
   ],
 };
+
+const volvoxUrl = VOLVOX_URL;
 ---
 
 <footer class="bg-surface/50 border-t border-theme">
@@ -123,7 +127,7 @@ const footerLinks = {
       <p class="text-sm text-muted-theme">
         Made with <span class="text-red-500">&#10084;</span> by
         <a
-          href="https://volvoxdev.com"
+          href={volvoxUrl}
           target="_blank"
           rel="noopener noreferrer"
           class="text-primary hover:underline"

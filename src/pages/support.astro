@@ -1,5 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { DISCORD_URL, GITHUB_URL, SUPPORT_EMAIL } from "@/constants/urls";
 ---
 
 <Layout
@@ -55,8 +56,8 @@ import Layout from "@/layouts/Layout.astro";
           <p class="text-secondary-theme mb-4">
             Can't find what you're looking for? Send us an email and we'll get back to you.
           </p>
-          <a href="mailto:support@volvoxdev.com" class="text-primary hover:underline font-medium">
-            support@volvoxdev.com &rarr;
+          <a href={`mailto:${SUPPORT_EMAIL}`} class="text-primary hover:underline font-medium">
+            {SUPPORT_EMAIL} &rarr;
           </a>
         </div>
 
@@ -75,7 +76,7 @@ import Layout from "@/layouts/Layout.astro";
             Join our Discord server to connect with other users and get real-time help.
           </p>
           <a
-            href="https://discord.gg/8ahXACdamN"
+            href={DISCORD_URL}
             target="_blank"
             rel="noopener noreferrer"
             class="text-primary hover:underline font-medium"
@@ -100,7 +101,7 @@ import Layout from "@/layouts/Layout.astro";
             Report bugs, request features, or contribute to the project on GitHub.
           </p>
           <a
-            href="https://github.com/VolvoxCommunity/Sobers"
+            href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
             class="text-primary hover:underline font-medium"
@@ -169,7 +170,7 @@ import Layout from "@/layouts/Layout.astro";
             Our team typically responds within 24 hours. We're here to help you succeed in your
             recovery journey.
           </p>
-          <a href="mailto:support@volvoxdev.com" class="btn btn-primary"> Contact Support </a>
+          <a href={`mailto:${SUPPORT_EMAIL}`} class="btn btn-primary"> Contact Support </a>
         </div>
       </section>
     </div>
