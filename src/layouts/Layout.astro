@@ -129,5 +129,98 @@ const fullCanonicalUrl = canonicalUrl ? `${siteUrl}${canonicalUrl}` : Astro.url.
         });
       });
     </script>
+
+    <!-- Google Analytics Event Tracking -->
+    <script>
+      import * as CookieConsent from "vanilla-cookieconsent";
+
+      /**
+       * Track a Google Analytics event (only if analytics consent is granted).
+       */
+      function trackEvent(
+        eventName: string,
+        params: Record<string, string | number | boolean> = {}
+      ) {
+        if (!CookieConsent.acceptedCategory("analytics")) return;
+        if (typeof window.gtag !== "function") return;
+
+        window.gtag("event", eventName, params);
+      }
+
+      // Expose globally for components that need it
+      (window as Window & { trackGAEvent?: typeof trackEvent }).trackGAEvent = trackEvent;
+
+      // Track App Store / Google Play download clicks
+      document.querySelectorAll('a[href*="apps.apple.com"]').forEach((link) => {
+        link.addEventListener("click", () => {
+          trackEvent("download_click", {
+            platform: "ios",
+            link_url: (link as HTMLAnchorElement).href,
+          });
+        });
+      });
+
+      document.querySelectorAll('a[href*="play.google.com"]').forEach((link) => {
+        link.addEventListener("click", () => {
+          trackEvent("download_click", {
+            platform: "android",
+            link_url: (link as HTMLAnchorElement).href,
+          });
+        });
+      });
+
+      // Track CTA button clicks
+      document.querySelectorAll("a.btn-primary, a.btn-secondary").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const text = btn.textContent?.trim() || "unknown";
+          const href = (btn as HTMLAnchorElement).href || "";
+          trackEvent("cta_click", {
+            button_text: text,
+            destination: href,
+          });
+        });
+      });
+
+      // Track external link clicks (GitHub, Discord, etc.)
+      document.querySelectorAll('a[target="_blank"]').forEach((link) => {
+        const href = (link as HTMLAnchorElement).href;
+        // Skip store links (already tracked as downloads)
+        if (href.includes("apps.apple.com") || href.includes("play.google.com")) return;
+
+        link.addEventListener("click", () => {
+          let linkType = "external";
+          if (href.includes("github.com")) linkType = "github";
+          else if (href.includes("discord")) linkType = "discord";
+          else if (href.includes("volvox")) linkType = "volvox";
+
+          trackEvent("external_link_click", {
+            link_type: linkType,
+            link_url: href,
+            link_text:
+              (link as HTMLAnchorElement).textContent?.trim() ||
+              link.getAttribute("aria-label") ||
+              "unknown",
+          });
+        });
+      });
+
+      // Track FAQ interactions (use capture phase to run before toggle)
+      document.querySelectorAll("[data-faq-trigger]").forEach((trigger) => {
+        trigger.addEventListener(
+          "click",
+          () => {
+            // Check state BEFORE the toggle happens (capture phase)
+            const wasCollapsed = trigger.getAttribute("aria-expanded") !== "true";
+            if (wasCollapsed) {
+              const question = trigger.querySelector("span")?.textContent?.trim() || "unknown";
+              trackEvent("faq_expand", {
+                question: question,
+              });
+            }
+          },
+          { capture: true }
+        );
+      });
+    </script>
   </body>
 </html>

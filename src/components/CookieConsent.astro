@@ -22,6 +22,8 @@
   function gtag(...args: unknown[]) {
     window.dataLayer.push(args);
   }
+  // Expose gtag globally for event tracking
+  window.gtag = gtag;
 
   // Set default consent to 'denied' before any other dataLayer operations
   gtag("consent", "default", {
