@@ -112,7 +112,7 @@ npm run build
 
 ## App Store Links
 
-- **iOS**: [App Store](https://apps.apple.com/us/app/sobriety-waypoint/id6755614815)
+- **iOS**: [App Store](https://apps.apple.com/app/id6755614815)
 - **Android**: [Google Play](https://play.google.com/store/apps/details?id=com.volvox.sobrietywaypoint)
 
 ## License
