@@ -77,3 +77,27 @@ Also make sure in your astro.config.mjs to add the Sentry plugin before Spotligh
 18:19:45 [content] Synced content
 18:19:45 [types] Generated 139ms
 18:19:45 [vite] Re-optimizing dependencies because vite config has changed
+18:46:09 Configuration file updated. Restarting...
+18:46:10 [@spotlightjs/astro] [@spotlightjs/astro] Setting up Spotlight
+🔎 [Spotlight] Checking if we are already running on port 8969
+🔎 [Spotlight] Sidecar is already running on port 8969
+18:46:10 [vite] Re-optimizing dependencies because lockfile has changed
+18:46:10 [content] Syncing content
+18:46:10 [content] Synced content
+18:46:10 [types] Generated 497ms
+18:46:10 [vite] Re-optimizing dependencies because vite config has changed
+18:46:40 Configuration file updated. Restarting...
+18:46:40 [@spotlightjs/astro] [@spotlightjs/astro] Setting up Spotlight
+🔎 [Spotlight] Checking if we are already running on port 8969
+🔎 [Spotlight] Sidecar is already running on port 8969
+18:46:41 [vite] Re-optimizing dependencies because vite config has changed
+18:46:42 [content] Syncing content
+18:46:42 [content] Astro config changed
+18:46:42 [content] Clearing content store
+18:46:42 [content] Synced content
+18:46:42 [types] Generated 1.81s
+18:46:42 [vite] Re-optimizing dependencies because vite config has changed
+18:47:16 [watch] .vercel/output/static/index.html
+18:47:16 [watch] .vercel/output/static/support/index.html
+18:47:16 [watch] .vercel/output/static/privacy/index.html
+18:47:16 [watch] .vercel/output/static/terms/index.html
