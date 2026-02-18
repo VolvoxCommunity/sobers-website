@@ -33,7 +33,6 @@
   "homepage": "https://github.com/VolvoxCommunity/swapgifts-website#readme",
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",
-    "@astrojs/vercel": "^9.0.4",
     "@fontsource/jetbrains-mono": "^5.2.8",
     "@sentry/astro": "^10.32.1",
     "@spotlightjs/astro": "^3.2.6",
