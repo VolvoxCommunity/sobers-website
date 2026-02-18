@@ -1,23 +1,22 @@
 /**
- * Centralized URL constants for the Sobers website.
+ * Centralized URL constants for the SwapGifts website.
  * Update URLs here to change them across the entire site.
  */
 
 // Site URLs
-export const SITE_URL = "https://sobers.app";
-export const WEB_APP_URL = "https://app.sobers.app";
+export const SITE_URL = "https://www.swapgifts.store";
+export const WEB_APP_URL = "https://app.swapgifts.store";
 
 // Company URLs
 export const VOLVOX_URL = "https://volvoxdev.com";
 
-// App Store URLs
-export const APP_STORE_URL = "https://apps.apple.com/app/id6755614815";
-export const PLAY_STORE_URL =
-  "https://play.google.com/store/apps/details?id=com.volvox.sobrietywaypoint";
+// App Store URLs (Placeholders if needed later)
+export const APP_STORE_URL = "#";
+export const PLAY_STORE_URL = "#";
 
 // Social URLs
-export const GITHUB_URL = "https://github.com/VolvoxCommunity/sobers";
-export const DISCORD_URL = "https://discord.gg/8ahXACdamN";
+export const GITHUB_URL = "https://github.com/VolvoxCommunity"; // Generic fallback
+export const DISCORD_URL = "#";
 
 // Support URLs
-export const SUPPORT_EMAIL = "support@volvoxdev.com";
+export const SUPPORT_EMAIL = "support@swapgifts.store";

@@ -1,6 +1,6 @@
-# Sobers Website
+# SwapGifts Website
 
-Landing page for [Sobers](https://sobers.app) - a free 12-step recovery accountability app for sponsors and sponsees.
+Landing page for [SwapGifts](https://www.swapgifts.store) - a free 12-step recovery accountability app for sponsors and sponsees.
 
 ## Tech Stack
 

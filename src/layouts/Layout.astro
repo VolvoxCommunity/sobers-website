@@ -20,7 +20,7 @@ interface Props {
 
 const {
   title,
-  description = "Free recovery companion app for sponsors and sponsees in AA, NA, and 12-step recovery programs. Track sobriety, manage tasks, and celebrate milestones together.",
+  description = "The easiest way to organize Secret Santa and gift exchanges online. Free and no registration required. Smart exclusions, wishlists, and global support.",
   ogImage = "/og-image.png",
   canonicalUrl,
 } = Astro.props;
@@ -43,8 +43,8 @@ const fullCanonicalUrl = canonicalUrl ? `${siteUrl}${canonicalUrl}` : Astro.url.
     <link rel="canonical" href={fullCanonicalUrl} />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/logo.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" /> -->
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -54,8 +54,8 @@ const fullCanonicalUrl = canonicalUrl ? `${siteUrl}${canonicalUrl}` : Astro.url.
     <meta property="og:image" content={`${siteUrl}${ogImage}`} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Sobers - Track the journey, not just the days" />
-    <meta property="og:site_name" content="Sobers" />
+    <meta property="og:image:alt" content="SwapGifts - Organize Gift Exchanges" />
+    <meta property="og:site_name" content="SwapGifts" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
@@ -63,7 +63,7 @@ const fullCanonicalUrl = canonicalUrl ? `${siteUrl}${canonicalUrl}` : Astro.url.
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={`${siteUrl}/twitter-image.png`} />
-    <meta property="twitter:image:alt" content="Sobers - Track the journey, not just the days" />
+    <meta property="twitter:image:alt" content="SwapGifts - Organize Gift Exchanges" />
 
     <!-- Theme Color -->
     <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
@@ -106,7 +106,7 @@ const fullCanonicalUrl = canonicalUrl ? `${siteUrl}${canonicalUrl}` : Astro.url.
       const downloadSelectors = [
         'a[href*="apps.apple.com"]',
         'a[href*="play.google.com"]',
-        'a[href*="app.sobers.app"]',
+        'a[href*="app.swapgifts.store"]',
         "[data-confetti]",
       ];
 
@@ -127,99 +127,6 @@ const fullCanonicalUrl = canonicalUrl ? `${siteUrl}${canonicalUrl}` : Astro.url.
             disableForReducedMotion: true,
           });
         });
-      });
-    </script>
-
-    <!-- Google Analytics Event Tracking -->
-    <script>
-      import * as CookieConsent from "vanilla-cookieconsent";
-
-      /**
-       * Track a Google Analytics event (only if analytics consent is granted).
-       */
-      function trackEvent(
-        eventName: string,
-        params: Record<string, string | number | boolean> = {}
-      ) {
-        if (!CookieConsent.acceptedCategory("analytics")) return;
-        if (typeof window.gtag !== "function") return;
-
-        window.gtag("event", eventName, params);
-      }
-
-      // Expose globally for components that need it
-      (window as Window & { trackGAEvent?: typeof trackEvent }).trackGAEvent = trackEvent;
-
-      // Track App Store / Google Play download clicks
-      document.querySelectorAll('a[href*="apps.apple.com"]').forEach((link) => {
-        link.addEventListener("click", () => {
-          trackEvent("download_click", {
-            platform: "ios",
-            link_url: (link as HTMLAnchorElement).href,
-          });
-        });
-      });
-
-      document.querySelectorAll('a[href*="play.google.com"]').forEach((link) => {
-        link.addEventListener("click", () => {
-          trackEvent("download_click", {
-            platform: "android",
-            link_url: (link as HTMLAnchorElement).href,
-          });
-        });
-      });
-
-      // Track CTA button clicks
-      document.querySelectorAll("a.btn-primary, a.btn-secondary").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const text = btn.textContent?.trim() || "unknown";
-          const href = (btn as HTMLAnchorElement).href || "";
-          trackEvent("cta_click", {
-            button_text: text,
-            destination: href,
-          });
-        });
-      });
-
-      // Track external link clicks (GitHub, Discord, etc.)
-      document.querySelectorAll('a[target="_blank"]').forEach((link) => {
-        const href = (link as HTMLAnchorElement).href;
-        // Skip store links (already tracked as downloads)
-        if (href.includes("apps.apple.com") || href.includes("play.google.com")) return;
-
-        link.addEventListener("click", () => {
-          let linkType = "external";
-          if (href.includes("github.com")) linkType = "github";
-          else if (href.includes("discord")) linkType = "discord";
-          else if (href.includes("volvox")) linkType = "volvox";
-
-          trackEvent("external_link_click", {
-            link_type: linkType,
-            link_url: href,
-            link_text:
-              (link as HTMLAnchorElement).textContent?.trim() ||
-              link.getAttribute("aria-label") ||
-              "unknown",
-          });
-        });
-      });
-
-      // Track FAQ interactions (use capture phase to run before toggle)
-      document.querySelectorAll("[data-faq-trigger]").forEach((trigger) => {
-        trigger.addEventListener(
-          "click",
-          () => {
-            // Check state BEFORE the toggle happens (capture phase)
-            const wasCollapsed = trigger.getAttribute("aria-expanded") !== "true";
-            if (wasCollapsed) {
-              const question = trigger.querySelector("span")?.textContent?.trim() || "unknown";
-              trackEvent("faq_expand", {
-                question: question,
-              });
-            }
-          },
-          { capture: true }
-        );
       });
     </script>
   </body>

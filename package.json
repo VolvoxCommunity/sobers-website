@@ -1,5 +1,5 @@
 {
-  "name": "sobers-website",
+  "name": "swapgifts-website",
   "version": "1.0",
   "packageManager": "pnpm@10.26.0",
   "description": "Website landing for Sobers - Recovery Accountability App",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/VolvoxCommunity/sobers-website.git"
+    "url": "git+https://github.com/VolvoxCommunity/swapgifts-website.git"
   },
   "keywords": [
     "sobriety",
@@ -28,9 +28,9 @@
   "author": "Volvox",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/VolvoxCommunity/sobers-website/issues"
+    "url": "https://github.com/VolvoxCommunity/swapgifts-website/issues"
   },
-  "homepage": "https://github.com/VolvoxCommunity/sobers-website#readme",
+  "homepage": "https://github.com/VolvoxCommunity/swapgifts-website#readme",
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",
     "@fontsource/jetbrains-mono": "^5.2.8",

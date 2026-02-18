@@ -20,7 +20,7 @@ This is an Astro v5 static site with Tailwind CSS v4, deployed to Vercel.
 ### Key Configuration
 
 - **Path alias**: `@/*` maps to `src/*` (configured in tsconfig.json)
-- **Site URL**: https://sobers.app (set in astro.config.mjs)
+- **Site URL**: https://www.swapgifts.store (set in astro.config.mjs)
 - **Integrations**: `@astrojs/sitemap` for auto-generated sitemap
 
 ### Project Structure

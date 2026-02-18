@@ -1,9 +1,5 @@
 ---
-import { APP_STORE_URL, PLAY_STORE_URL } from "@/constants/urls";
-import ThemeImage from "./ThemeImage.astro";
-
-const appStoreUrl = APP_STORE_URL;
-const playStoreUrl = PLAY_STORE_URL;
+import { WEB_APP_URL } from "@/constants/urls";
 ---
 
 <section id="hero" class="relative overflow-hidden pt-32 pb-20 lg:pt-40 lg:pb-32">
@@ -28,20 +24,20 @@ const playStoreUrl = PLAY_STORE_URL;
         <h1
           class="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-theme leading-tight mb-6"
         >
-          Track the journey,
+          Organize Gift Exchanges
           <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            not just the days.
+            in Minutes
           </span>
         </h1>
 
         <p class="text-lg sm:text-xl text-secondary-theme mb-8 max-w-2xl mx-auto lg:mx-0">
-          Sobers empowers sponsors and sponsees in 12-step recovery programs with structured
-          accountability, sobriety tracking, and visual progress timelines.
+          The easiest way to organize Secret Santa and gift exchanges online. Free and no registration required.
         </p>
 
         <!-- CTAs -->
         <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
-          <a href="#download" class="btn btn-primary">
+          <a href={WEB_APP_URL} class="btn btn-primary">
+            Start Exchange
             <svg
               class="w-5 h-5"
               fill="none"
@@ -53,12 +49,11 @@ const playStoreUrl = PLAY_STORE_URL;
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
-                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
             </svg>
-            Download Free
           </a>
-          <a href="#features" class="btn btn-secondary" data-confetti>
-            Learn More
+          <a href="#how-it-works" class="btn btn-secondary">
+            How it works
             <svg
               class="w-5 h-5"
               fill="none"
@@ -70,37 +65,13 @@ const playStoreUrl = PLAY_STORE_URL;
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 stroke-width="2"
-                d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                d="M19 9l-7 7-7-7"></path>
             </svg>
-          </a>
-        </div>
-
-        <!-- App Store Badges -->
-        <div
-          id="download"
-          class="flex flex-wrap gap-4 justify-center lg:justify-start items-center"
-          aria-label="Download options"
-        >
-          <a href={appStoreUrl} target="_blank" rel="noopener noreferrer" class="store-badge">
-            <img
-              src="/app-store-badge.svg"
-              alt="Download on the App Store"
-              class="h-[48px] w-auto"
-              loading="eager"
-            />
-          </a>
-          <a href={playStoreUrl} target="_blank" rel="noopener noreferrer" class="store-badge">
-            <img
-              src="/google-play-badge.png"
-              alt="Get it on Google Play"
-              class="h-[72px] w-auto"
-              loading="eager"
-            />
           </a>
         </div>
       </div>
 
-      <!-- App Screenshot -->
+      <!-- App Screenshot/Image -->
       <div
         class="relative flex justify-center lg:justify-end animate-[slide-up_0.6s_ease-out_0.2s_both]"
       >
@@ -110,39 +81,26 @@ const playStoreUrl = PLAY_STORE_URL;
             class="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-3xl blur-2xl"
           >
           </div>
-          <!-- Device Frame -->
+          <!-- Device Frame (Simplified) -->
           <div class="relative bg-surface border border-theme rounded-3xl p-3 shadow-2xl">
             <div class="bg-dark-bg rounded-2xl overflow-hidden">
-              <ThemeImage
-                lightSrc="/app-screenshot-light.png"
-                darkSrc="/app-screenshot-dark.png"
-                alt="Sobers app showing sobriety tracking dashboard"
-                width={320}
-                height={640}
-                class="w-full max-w-[280px] sm:max-w-[320px] h-auto"
-                loading="eager"
-              />
+               <img
+                  src="/hero-placeholder.svg"
+                  alt="SwapGifts App"
+                  class="w-full max-w-[280px] sm:max-w-[320px] h-auto"
+                  loading="eager"
+               />
             </div>
           </div>
-          <!-- Floating Elements -->
-          <div
+           <!-- Floating Elements -->
+           <div
             class="absolute -top-4 -right-4 bg-surface border border-theme rounded-xl p-3 shadow-lg animate-[float_6s_ease-in-out_infinite]"
           >
             <div class="flex items-center gap-2">
-              <div class="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center">
-                <svg
-                  class="w-4 h-4 text-green-500"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  aria-hidden="true"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                    clip-rule="evenodd"></path>
-                </svg>
+              <div class="w-8 h-8 rounded-lg bg-red-500/20 flex items-center justify-center">
+                <span class="text-xl">🎁</span>
               </div>
-              <span class="text-sm font-medium text-primary-theme">Task Done!</span>
+              <span class="text-sm font-medium text-primary-theme">Gift Sent!</span>
             </div>
           </div>
           <div
@@ -150,19 +108,9 @@ const playStoreUrl = PLAY_STORE_URL;
           >
             <div class="flex items-center gap-2">
               <div class="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
-                <svg
-                  class="w-4 h-4 text-primary"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  aria-hidden="true"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                    clip-rule="evenodd"></path>
-                </svg>
+                 <span class="text-xl">🎅</span>
               </div>
-              <span class="text-sm font-medium text-primary-theme">365 Days</span>
+              <span class="text-sm font-medium text-primary-theme">Secret Santa</span>
             </div>
           </div>
         </div>

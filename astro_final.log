@@ -1,0 +1,79 @@
+
+> sobers-website@1.0 dev
+> astro dev
+
+18:15:37 [@spotlightjs/astro] [@spotlightjs/astro] Setting up Spotlight
+🔎 [Spotlight] Checking if we are already running on port 8969
+18:15:37 [types] Generated 1ms
+🔎 [Spotlight] Sidecar listening on 8969
+18:15:37 [content] Syncing content
+18:15:37 [content] Synced content
+
+ astro  v5.17.2 ready in 1626 ms
+
+┃ Local    http://localhost:4321/
+┃ Network  use --host to expose
+
+18:15:37 watching for file changes...
+!!!!!!!!!!!!!!!!!!!!!!!!!!!! [@spotlightjs/astro] !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Could not find Sentry SDK. Please make sure to install it for the best experience.
+Visit https://spotlightjs.com/setup/astro/ for detailed instructions.
+
+npx astro add @sentry/astro
+
+Also make sure in your astro.config.mjs to add the Sentry plugin before Spotlight:
+╭ astro.config.mjs ──────────────────────────────╮
+│ import { defineConfig } from "astro/config";   │
+│ import spotlightjs from "@spotlightjs/astro";  │
+│ import sentry from "@sentry/astro";            │
+│                                                │
+│ // https://astro.build/config                  │
+│ export default defineConfig({                  │
+│   integrations: [sentry(), spotlightjs()]      │
+│ });                                            │
+╰────────────────────────────────────────────────╯
+!!!!!!!!!!!!!!!!!!!!!!!!!!!! [@spotlightjs/astro] !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+18:16:14 [200] / 117ms
+18:16:14 [404] /hero-placeholder.svg 2ms
+18:16:16 [404] /hero-placeholder.svg 1ms
+18:16:16 [404] /hero-placeholder.svg 1ms
+18:16:16 [404] /hero-placeholder.svg 1ms
+18:16:16 [404] /hero-placeholder.svg 1ms
+18:16:16 [404] /hero-placeholder.svg 1ms
+18:16:16 [404] /hero-placeholder.svg 1ms
+18:16:16 [404] /hero-placeholder.svg 2ms
+18:16:16 [404] /hero-placeholder.svg 3ms
+18:16:16 [404] /hero-placeholder.svg 1ms
+18:18:26 Configuration file updated. Restarting...
+18:18:26 [watch] astro.config.mjs
+18:18:26 [watch] astro.config.mjs
+18:18:26 [watch] public/robots.txt
+18:18:26 [watch] public/robots.txt
+18:18:26 [@spotlightjs/astro] [@spotlightjs/astro] Setting up Spotlight
+🔎 [Spotlight] Checking if we are already running on port 8969
+🔎 [Spotlight] Sidecar is already running on port 8969
+18:18:26 [vite] Re-optimizing dependencies because vite config has changed
+18:18:26 [content] Syncing content
+18:18:26 [content] Astro config changed
+18:18:26 [content] Clearing content store
+18:18:26 [content] Synced content
+18:18:26 [types] Generated 160ms
+18:18:26 [vite] Re-optimizing dependencies because vite config has changed
+18:18:37 Configuration file updated. Restarting...
+18:18:37 [@spotlightjs/astro] [@spotlightjs/astro] Setting up Spotlight
+🔎 [Spotlight] Checking if we are already running on port 8969
+🔎 [Spotlight] Sidecar is already running on port 8969
+18:18:37 [vite] Re-optimizing dependencies because vite config has changed
+18:18:37 [content] Syncing content
+18:18:37 [content] Synced content
+18:18:37 [types] Generated 130ms
+18:18:37 [vite] Re-optimizing dependencies because vite config has changed
+18:19:45 Configuration file updated. Restarting...
+18:19:45 [@spotlightjs/astro] [@spotlightjs/astro] Setting up Spotlight
+🔎 [Spotlight] Checking if we are already running on port 8969
+🔎 [Spotlight] Sidecar is already running on port 8969
+18:19:45 [vite] Re-optimizing dependencies because vite config has changed
+18:19:45 [content] Syncing content
+18:19:45 [content] Synced content
+18:19:45 [types] Generated 139ms
+18:19:45 [vite] Re-optimizing dependencies because vite config has changed
