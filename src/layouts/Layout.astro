@@ -132,6 +132,7 @@ const fullCanonicalUrl = canonicalUrl ? `${siteUrl}${canonicalUrl}` : Astro.url.
 
     <!-- Google Analytics Event Tracking -->
     <script>
+      // Namespace import required: vanilla-cookieconsent has no default export
       import * as CookieConsent from "vanilla-cookieconsent";
 
       /**

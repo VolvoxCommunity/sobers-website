@@ -113,7 +113,7 @@ npm run build
 ## App Store Links
 
 - **iOS**: [App Store](https://apps.apple.com/app/id6755614815)
-- **Android**: [Google Play](https://play.google.com/store/apps/details?id=com.volvox.sobrietywaypoint)
+- **Android**: [Google Play](https://play.google.com/store/apps/details?id=com.volvox.sobers)
 
 ## License
 
@@ -121,4 +121,4 @@ ISC License - see [LICENSE](LICENSE)
 
 ## Credits
 
-Made with love by [Volvox](https://volvoxdev.com)
+Made with love by [Volvox](https://volvox.dev)
