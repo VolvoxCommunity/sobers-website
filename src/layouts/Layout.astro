@@ -9,7 +9,7 @@ import Footer from "@/components/Footer.astro";
 import AnimatedBackground from "@/components/AnimatedBackground.astro";
 import CookieConsent from "@/components/CookieConsent.astro";
 import Analytics from "@vercel/analytics/astro";
-import { SITE_URL } from "@/constants/urls";
+import { SITE_URL, APP_STORE_ID } from "@/constants/urls";
 
 interface Props {
   title: string;
@@ -41,6 +41,9 @@ const fullCanonicalUrl = canonicalUrl ? `${siteUrl}${canonicalUrl}` : Astro.url.
     <meta name="title" content={title} />
     <meta name="description" content={description} />
     <link rel="canonical" href={fullCanonicalUrl} />
+
+    <!-- Apple Smart App Banner -->
+    <meta name="apple-itunes-app" content={`app-id=${APP_STORE_ID}`} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/logo.png" />

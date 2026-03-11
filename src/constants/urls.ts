@@ -10,10 +10,12 @@ export const WEB_APP_URL = "https://app.sobers.app";
 // Company URLs
 export const VOLVOX_URL = "https://volvox.dev";
 
+// App Store IDs
+export const APP_STORE_ID = "6755614815";
+
 // App Store URLs
-export const APP_STORE_URL = "https://apps.apple.com/app/id6755614815";
-export const PLAY_STORE_URL =
-	"https://play.google.com/store/apps/details?id=com.volvox.sobers";
+export const APP_STORE_URL = `https://apps.apple.com/app/id${APP_STORE_ID}`;
+export const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.volvox.sobers";
 
 // Social URLs
 export const GITHUB_URL = "https://github.com/VolvoxCommunity/sobers";
