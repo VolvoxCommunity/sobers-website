@@ -4,7 +4,7 @@ import sitemap from "@astrojs/sitemap";
 import spotlight from "@spotlightjs/astro";
 
 export default defineConfig({
-  site: "https://sobers.app",
+  site: "https://www.sobers.app",
   vite: {
     plugins: [tailwindcss()],
   },
