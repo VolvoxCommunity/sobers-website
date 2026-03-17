@@ -37,7 +37,7 @@
     "@sentry/astro": "^10.43.0",
     "@spotlightjs/astro": "^3.2.6",
     "@tailwindcss/vite": "^4.2.1",
-    "@vercel/analytics": "^2.0.0",
+    "@vercel/analytics": "^2.0.1",
     "astro": "^6.0.2",
     "canvas-confetti": "^1.9.4",
     "tailwindcss": "^4.2.1",
