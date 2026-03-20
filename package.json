@@ -34,7 +34,7 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.7.1",
     "@fontsource/jetbrains-mono": "^5.2.8",
-    "@sentry/astro": "^10.44.0",
+    "@sentry/astro": "^10.45.0",
     "@spotlightjs/astro": "^3.2.6",
     "@tailwindcss/vite": "^4.2.1",
     "@vercel/analytics": "^2.0.1",
