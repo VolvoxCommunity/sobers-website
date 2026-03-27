@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/VolvoxCommunity/sobers-website#readme",
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.1",
+    "@astrojs/sitemap": "^3.7.2",
     "@fontsource/jetbrains-mono": "^5.2.8",
     "@sentry/astro": "^10.44.0",
     "@spotlightjs/astro": "^3.2.6",
