@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.sobers.app/sitemap-index.xml
+Sitemap: https://sobers.app/sitemap.xml

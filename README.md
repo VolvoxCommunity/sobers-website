@@ -1,124 +1,36 @@
-# Sobers Website
-
-Landing page for [Sobers](https://sobers.app) - a free 12-step recovery accountability app for sponsors and sponsees.
-
-## Tech Stack
-
-- **Framework**: [Astro](https://astro.build) v5
-- **Styling**: [Tailwind CSS](https://tailwindcss.com) v4
-- **Font**: JetBrains Mono
-- **Deployment**: Vercel
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 
-### Prerequisites
-
-- Node.js 20+
-- npm, pnpm, or yarn
-
-### Installation
+First, run the development server:
 
 ```bash
-# Install dependencies
-npm install
-
-# Start development server
 npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-## Project Structure
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```
-src/
-├── components/     # Reusable UI components
-│   ├── Header.astro
-│   ├── Footer.astro
-│   ├── Hero.astro
-│   ├── Features.astro
-│   ├── HowItWorks.astro
-│   ├── Screenshots.astro
-│   ├── FAQ.astro
-│   └── CTA.astro
-├── layouts/        # Page layouts
-│   └── Layout.astro
-├── pages/          # Route pages
-│   ├── index.astro
-│   ├── privacy.astro
-│   ├── terms.astro
-│   └── support.astro
-└── styles/         # Global styles
-    └── global.css
-```
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## Features
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-- **Dark/Light Mode**: System preference detection with manual toggle
-- **Responsive Design**: Mobile-first approach
-- **Accessibility**: WCAG 2.1 AA compliant
-- **SEO Optimized**: Meta tags, Open Graph, JSON-LD schema
-- **Performance**: Lighthouse 95+ scores
-- **Sitemap**: Auto-generated via `@astrojs/sitemap`
+## Learn More
 
-## Pages
+To learn more about Next.js, take a look at the following resources:
 
-- `/` - Landing page with hero, features, FAQ sections
-- `/privacy` - Privacy Policy
-- `/terms` - Terms of Service
-- `/support` - Support & FAQ
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## Customization
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-### Brand Colors
+## Deploy on Vercel
 
-Edit `src/styles/global.css`:
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-```css
-@theme {
-  --color-primary: #007aff;
-  --color-secondary: #af58da;
-  --color-dark-bg: #0f172a;
-  --color-dark-surface: #1e293b;
-}
-```
-
-### Assets
-
-Replace placeholder files in `public/`:
-
-- `app-screenshot.png` - Hero app screenshot (320x640px)
-- `og-image.png` - Social sharing image (1200x630px)
-- `screenshots/*.png` - App screenshots gallery
-
-## Deployment
-
-### Vercel (Recommended)
-
-1. Push to GitHub
-2. Import project in Vercel
-3. Deploy automatically
-
-### Manual
-
-```bash
-npm run build
-# Upload dist/ folder to any static host
-```
-
-## App Store Links
-
-- **iOS**: [App Store](https://apps.apple.com/app/id6755614815)
-- **Android**: [Google Play](https://play.google.com/store/apps/details?id=com.volvox.sobers)
-
-## License
-
-ISC License - see [LICENSE](LICENSE)
-
-## Credits
-
-Made with love by [Volvox](https://volvox.dev)
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
