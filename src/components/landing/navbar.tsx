@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "motion/react";
 import Link from "next/link";
+import Image from "next/image";
 import { APP_STORE_URL, PLAY_STORE_URL } from "./hero";
 
 export function Navbar() {
@@ -16,9 +17,9 @@ export function Navbar() {
     // Detect OS for dynamic store routing
     const userAgent = navigator.userAgent.toLowerCase();
     const platform = navigator.platform.toLowerCase();
-    
-    const isApple = 
-      /mac|iphone|ipad|ipod/.test(platform) || 
+
+    const isApple =
+      /mac|iphone|ipad|ipod/.test(platform) ||
       /mac|iphone|ipad|ipod/.test(userAgent) ||
       (navigator.maxTouchPoints > 1 && /macintosh/.test(userAgent)); // iPadOS
 
@@ -53,9 +54,9 @@ export function Navbar() {
     <AnimatePresence>
       <motion.div
         initial={{ y: -100, opacity: 0 }}
-        animate={{ 
-          y: isHidden ? -100 : 0, 
-          opacity: isHidden ? 0 : 1 
+        animate={{
+          y: isHidden ? -100 : 0,
+          opacity: isHidden ? 0 : 1
         }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4"
@@ -64,9 +65,9 @@ export function Navbar() {
           animate={{
             backgroundColor: isScrolled ? "var(--card-nav-scrolled)" : "var(--card-nav-idle)",
             backdropFilter: isScrolled ? "blur(16px)" : "blur(8px)",
-            padding: isScrolled ? "0.5rem 0.5rem 0.5rem 1.5rem" : "0.75rem 0.75rem 0.75rem 1.5rem",
-            boxShadow: isScrolled 
-              ? "0 10px 30px -10px rgba(0,0,0,0.5), inset 0 1px 1px var(--border-light), inset 0 -1px 1px rgba(0,0,0,0.4)" 
+            padding: isScrolled ? "0.5rem 0.5rem 0.5rem 1rem" : "0.75rem 0.75rem 0.75rem 1.5rem",
+            boxShadow: isScrolled
+              ? "0 10px 30px -10px rgba(0,0,0,0.5), inset 0 1px 1px var(--border-light), inset 0 -1px 1px rgba(0,0,0,0.4)"
               : "0 0px 0px rgba(0,0,0,0), inset 0 1px 1px var(--border-light), inset 0 -1px 1px rgba(0,0,0,0.2)",
             borderColor: isScrolled ? "var(--border)" : "var(--border-muted)"
           }}
@@ -74,8 +75,16 @@ export function Navbar() {
           className="flex items-center justify-between gap-8 rounded-full border border-border"
         >
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <span className="text-foreground font-black tracking-tighter uppercase text-lg group-hover:text-muted-foreground transition-colors">
+          <Link href="/" className="flex items-center gap-1 group">
+            <div className="relative w-6 h-6 md:w-7 md:h-7 overflow-hidden flex items-center justify-center p-1.5 transition-transform group-hover:scale-105 group-active:scale-95 shadow-sm">
+              <Image
+                src="/logo.png"
+                alt="Sobers Logo"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <span className="text-foreground font-black tracking-tighter uppercase text-lg md:text-xl group-hover:text-muted-foreground transition-colors">
               Sobers
             </span>
           </Link>
@@ -87,8 +96,8 @@ export function Navbar() {
               <Link href="#timeline" className="hover:text-foreground transition-colors">Timeline</Link>
               <Link href="/support" className="hover:text-foreground transition-colors">Support</Link>
             </div>
-            
-            <Link 
+
+            <Link
               href={storeUrl}
               target="_blank"
               rel="noopener noreferrer"

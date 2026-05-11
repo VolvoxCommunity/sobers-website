@@ -122,7 +122,7 @@ export function Footer() {
             style={{ y: contentY, opacity: contentOpacity }}
             className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 mt-20 w-full max-w-5xl mx-auto"
           >
-            <h2 className="text-5xl md:text-8xl font-black text-glow tracking-tighter mb-12 text-center">
+            <h2 className="text-5xl md:text-8xl font-black tracking-tighter mb-12 text-center">
               Ready to begin?
             </h2>
 
