@@ -17,17 +17,17 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 export default function TermsPage() {
   return (
     <LegalLayout title="Terms of Service" lastUpdated="December 2025">
-      <Section title="Agreement to Terms">
-        <p>
-          By downloading, installing, or using Sobers ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you disagree with any part of these terms, you may not access or use the App.
-        </p>
-      </Section>
+<Section title="Agreement to Terms">
+          <p>
+            By downloading, installing, or using Sobers (&ldquo;the App&rdquo;), you agree to be bound by these Terms of Service (&ldquo;Terms&rdquo;). If you disagree with any part of these terms, you may not access or use the App.
+          </p>
+        </Section>
 
       <Section title="Medical Disclaimer">
         <div className="p-8 bg-warning/5 border border-warning/20 rounded-3xl">
           <p className="text-warning font-bold mb-4 uppercase tracking-widest text-xs">Critical Information</p>
           <p className="text-xl text-foreground font-medium mb-4 italic">
-            "Sobers is a support tool, NOT a substitute for professional medical advice, treatment, diagnosis, or therapy."
+            &ldquo;Sobers is a support tool, NOT a substitute for professional medical advice, treatment, diagnosis, or therapy.&rdquo;
           </p>
           <ul className="space-y-2 text-muted-foreground text-sm">
             <li className="flex items-start gap-2">

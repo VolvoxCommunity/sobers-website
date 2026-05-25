@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
@@ -24,12 +24,15 @@ export const PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com
 
 export default function Hero() {
   const [phase, setPhase] = useState<1 | 2>(1);
-  const scrollThreshold = useRef(false);
-  const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const { resolvedTheme } = useTheme();
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
+  }, []);
+
+  useEffect(() => {
     let ticking = false;
 
     const handleScroll = () => {

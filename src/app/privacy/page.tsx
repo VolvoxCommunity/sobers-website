@@ -19,10 +19,10 @@ export default function PrivacyPage() {
     <LegalLayout title="Privacy Policy" lastUpdated="December 2025">
       <Section title="Introduction">
         <p>
-          Sobers ("we," "our," or "us"), operated by Volvox, is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application and related services (collectively, the "Service").
+          Sobers (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;), operated by Volvox, is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application and related services (collectively, the &ldquo;Service&rdquo;).
         </p>
         <p className="p-6 bg-card border border-border rounded-2xl italic text-muted-foreground">
-          "We understand that recovery is a deeply personal journey. That's why we've built Sobers with privacy as a foundational principle. Your sobriety data, personal reflections, and recovery progress are treated with the highest level of care and protection."
+          &ldquo;We understand that recovery is a deeply personal journey. That&apos;s why we&apos;ve built Sobers with privacy as a foundational principle. Your sobriety data, personal reflections, and recovery progress are treated with the highest level of care and protection.&rdquo;
         </p>
       </Section>
 

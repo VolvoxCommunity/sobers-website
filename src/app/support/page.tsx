@@ -97,7 +97,7 @@ export default function SupportPage() {
       <Section title="Still need help?">
         <div className="p-8 bg-primary/5 border border-primary/10 rounded-3xl text-center">
           <p className="text-xl text-foreground font-medium mb-6">
-            Our team typically responds within 24 hours. We're here to help you succeed in your recovery journey.
+            Our team typically responds within 24 hours. We&apos;re here to help you succeed in your recovery journey.
           </p>
           <a 
             href={`mailto:${SUPPORT_EMAIL}`}

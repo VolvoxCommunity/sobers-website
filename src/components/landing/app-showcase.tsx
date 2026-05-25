@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import { useTheme } from "next-themes";
+import type { MotionValue } from "motion/react";
 
 const screenshots = [
   { id: "dashboard", title: "Dashboard" },
@@ -20,7 +21,7 @@ function PhoneItem({
 }: {
   item: typeof screenshots[0];
   index: number;
-  progress: any;
+  progress: MotionValue<number>;
   theme: string;
 }) {
   const rotateY = useTransform(
@@ -92,6 +93,7 @@ export function AppShowcase() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 
@@ -114,6 +116,14 @@ export function AppShowcase() {
   // Track position (350px per step: 250 width + 100 gap)
   const trackX = useTransform(springProgress, (v) => -v * 350);
 
+  // Pre-compute title animations for each screenshot
+  const titleAnimations = screenshots.map((_, i) => ({
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    opacity: useTransform(springProgress as MotionValue<number>, [i - 0.5, i, i + 0.5], [0, 1, 0]),
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    y: useTransform(springProgress as MotionValue<number>, [i - 0.5, i, i + 0.5], [20, 0, -20]),
+  }));
+
 
   return (
     <section className="relative w-full bg-background z-10 font-sans">
@@ -129,17 +139,13 @@ export function AppShowcase() {
 
           <div className="w-full text-center z-30 px-4 mt-16 mb-8 flex-shrink-0">
             <div className="relative h-16 w-full max-w-2xl mx-auto flex justify-center items-center">
-              {screenshots.map((item, i) => {
-                const opacity = useTransform(springProgress, [i - 0.5, i, i + 0.5], [0, 1, 0]);
-                const y = useTransform(springProgress, [i - 0.5, i, i + 0.5], [20, 0, -20]);
-                return (
-                  <motion.div key={item.id} style={{ opacity, y }} className="absolute w-full text-center">
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-silver-matte">
-                      {item.title}
-                    </h2>
-                  </motion.div>
-                );
-              })}
+              {screenshots.map((item, i) => (
+                <motion.div key={item.id} style={{ opacity: titleAnimations[i].opacity, y: titleAnimations[i].y }} className="absolute w-full text-center">
+                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-silver-matte">
+                    {item.title}
+                  </h2>
+                </motion.div>
+              ))}
             </div>
           </div>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { PLAY_STORE_URL } from "./hero";
 
@@ -47,7 +48,7 @@ export function AndroidSmartBanner() {
             </svg>
           </button>
           
-          <img src="/logo.png" alt="Sobers" className="w-10 h-10 rounded-lg shadow-sm" />
+          <Image src="/logo.png" alt="Sobers" width={40} height={40} className="w-10 h-10 rounded-lg shadow-sm" />
           
           <div className="ml-3 flex-1">
             <div className="text-foreground font-bold text-sm leading-tight">Sobers</div>

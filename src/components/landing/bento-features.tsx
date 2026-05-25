@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { CheckIcon, PlayIcon, ComputerDesktopIcon } from "@heroicons/react/24/outline";
+import { CheckIcon, ComputerDesktopIcon } from "@heroicons/react/24/outline";
 
 const AppleIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>

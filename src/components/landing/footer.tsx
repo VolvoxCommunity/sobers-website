@@ -20,8 +20,15 @@ const GooglePlayIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-function MagneticButton({ children, className, href, onClick }: any) {
-  const ref = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
+interface MagneticButtonProps {
+  children: React.ReactNode;
+  className?: string;
+  href?: string;
+  onClick?: () => void;
+}
+
+function MagneticButton({ children, className, href, onClick }: MagneticButtonProps) {
+  const ref = useRef<HTMLAnchorElement & HTMLButtonElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const handleMouse = (e: React.MouseEvent) => {
@@ -41,7 +48,7 @@ function MagneticButton({ children, className, href, onClick }: any) {
 
   return (
     <Component
-      ref={ref as any}
+      ref={ref}
       href={href}
       target={href?.startsWith("http") ? "_blank" : undefined}
       rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}

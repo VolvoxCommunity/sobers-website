@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "motion/react";
 import Link from "next/link";
 import Image from "next/image";
@@ -12,6 +12,7 @@ export function Navbar() {
   const [isHidden, setIsHidden] = useState(false);
   const [lastY, setLastY] = useState(0);
   const [storeUrl, setStoreUrl] = useState(APP_STORE_URL);
+  const storeUrlRef = useRef(APP_STORE_URL);
 
   useEffect(() => {
     // Detect OS for dynamic store routing
@@ -23,9 +24,10 @@ export function Navbar() {
       /mac|iphone|ipad|ipod/.test(userAgent) ||
       (navigator.maxTouchPoints > 1 && /macintosh/.test(userAgent)); // iPadOS
 
-    if (!isApple) {
-      setStoreUrl(PLAY_STORE_URL);
-    }
+    const detectedUrl = !isApple ? PLAY_STORE_URL : APP_STORE_URL;
+    storeUrlRef.current = detectedUrl;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setStoreUrl(detectedUrl);
   }, []);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
