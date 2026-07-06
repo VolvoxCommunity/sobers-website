@@ -1,124 +1,52 @@
 # Sobers Website
 
-Landing page for [Sobers](https://sobers.app) - a free 12-step recovery accountability app for sponsors and sponsees.
+Marketing site for [Sobers](https://sobers.app) — a mobile app connecting sponsors and sponsees in 12-step recovery programs. Built by [Volvox](https://volvox.dev).
 
-## Tech Stack
+## Stack
 
-- **Framework**: [Astro](https://astro.build) v5
-- **Styling**: [Tailwind CSS](https://tailwindcss.com) v4
-- **Font**: JetBrains Mono
-- **Deployment**: Vercel
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v4
+- **Animation:** Motion (motion/react)
+- **Theme:** next-themes
 
 ## Getting Started
 
-### Prerequisites
-
-- Node.js 20+
-- npm, pnpm, or yarn
-
-### Installation
-
 ```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
+pnpm install
+pnpm dev
 ```
 
-## Project Structure
+Open [http://localhost:3000](http://localhost:3000).
+
+## Scripts
+
+| Command | Description |
+|---|---|
+| `pnpm dev` | Start dev server |
+| `pnpm build` | Production build (includes TypeScript check) |
+| `pnpm start` | Start production server |
+| `pnpm lint` | Run ESLint |
+
+## Structure
 
 ```
 src/
-├── components/     # Reusable UI components
-│   ├── Header.astro
-│   ├── Footer.astro
-│   ├── Hero.astro
-│   ├── Features.astro
-│   ├── HowItWorks.astro
-│   ├── Screenshots.astro
-│   ├── FAQ.astro
-│   └── CTA.astro
-├── layouts/        # Page layouts
-│   └── Layout.astro
-├── pages/          # Route pages
-│   ├── index.astro
-│   ├── privacy.astro
-│   ├── terms.astro
-│   └── support.astro
-└── styles/         # Global styles
-    └── global.css
+├── app/
+│   ├── page.tsx          # Landing page
+│   ├── terms/page.tsx    # Terms of Service
+│   ├── privacy/page.tsx  # Privacy Policy
+│   └── support/page.tsx  # Support Center
+└── components/
+    ├── landing/          # Landing page components
+    │   ├── navbar.tsx
+    │   ├── hero.tsx
+    │   ├── bento-features.tsx
+    │   ├── usage-timeline.tsx
+    │   ├── app-showcase.tsx
+    │   ├── faq.tsx
+    │   ├── footer.tsx
+    │   └── smart-banner.tsx
+    └── legal/            # Legal page layout
+        └── legal-layout.tsx
 ```
-
-## Features
-
-- **Dark/Light Mode**: System preference detection with manual toggle
-- **Responsive Design**: Mobile-first approach
-- **Accessibility**: WCAG 2.1 AA compliant
-- **SEO Optimized**: Meta tags, Open Graph, JSON-LD schema
-- **Performance**: Lighthouse 95+ scores
-- **Sitemap**: Auto-generated via `@astrojs/sitemap`
-
-## Pages
-
-- `/` - Landing page with hero, features, FAQ sections
-- `/privacy` - Privacy Policy
-- `/terms` - Terms of Service
-- `/support` - Support & FAQ
-
-## Customization
-
-### Brand Colors
-
-Edit `src/styles/global.css`:
-
-```css
-@theme {
-  --color-primary: #007aff;
-  --color-secondary: #af58da;
-  --color-dark-bg: #0f172a;
-  --color-dark-surface: #1e293b;
-}
-```
-
-### Assets
-
-Replace placeholder files in `public/`:
-
-- `app-screenshot.png` - Hero app screenshot (320x640px)
-- `og-image.png` - Social sharing image (1200x630px)
-- `screenshots/*.png` - App screenshots gallery
-
-## Deployment
-
-### Vercel (Recommended)
-
-1. Push to GitHub
-2. Import project in Vercel
-3. Deploy automatically
-
-### Manual
-
-```bash
-npm run build
-# Upload dist/ folder to any static host
-```
-
-## App Store Links
-
-- **iOS**: [App Store](https://apps.apple.com/app/id6755614815)
-- **Android**: [Google Play](https://play.google.com/store/apps/details?id=com.volvox.sobers)
-
-## License
-
-ISC License - see [LICENSE](LICENSE)
-
-## Credits
-
-Made with love by [Volvox](https://volvox.dev)
