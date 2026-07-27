@@ -54,7 +54,7 @@ name = "actionlint"
 [[plugin]]
 name = "eslint"
 package_file = "package.json"
-package_filters = ["eslint", "prettier"]
+package_filters = ["eslint", "next", "typescript"]
 
 [[plugin]]
 name = "osv-scanner"
