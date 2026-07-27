@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { useRef, useState, useEffect } from "react";
-import Image from "next/image";
-import { motion, useScroll, useTransform, useSpring } from "motion/react";
-import { useTheme } from "next-themes";
-import type { MotionValue } from "motion/react";
+import { useRef, useState, useEffect } from 'react';
+import Image from 'next/image';
+import { motion, useScroll, useTransform, useSpring } from 'motion/react';
+import { useTheme } from 'next-themes';
+import type { MotionValue } from 'motion/react';
 
 const screenshots = [
-  { id: "dashboard", title: "Dashboard" },
-  { id: "steps", title: "12 Steps" },
-  { id: "timeline", title: "Timeline" },
-  { id: "tasks", title: "Tasks" },
+  { id: 'dashboard', title: 'Dashboard' },
+  { id: 'steps', title: '12 Steps' },
+  { id: 'timeline', title: 'Timeline' },
+  { id: 'tasks', title: 'Tasks' },
 ];
 
 function PhoneItem({
@@ -19,40 +19,20 @@ function PhoneItem({
   progress,
   theme,
 }: {
-  item: typeof screenshots[0];
+  item: (typeof screenshots)[0];
   index: number;
   progress: MotionValue<number>;
   theme: string;
 }) {
-  const rotateY = useTransform(
-    progress,
-    [index - 1, index, index + 1],
-    [-45, 0, 45]
-  );
-  
-  const scale = useTransform(
-    progress,
-    [index - 1, index, index + 1],
-    [0.85, 1, 0.85]
-  );
-  
-  const z = useTransform(
-    progress,
-    [index - 1, index, index + 1],
-    [-100, 0, -100]
-  );
-  
-  const opacity = useTransform(
-    progress,
-    [index - 1, index, index + 1],
-    [0.3, 1, 0.3]
-  );
-  
-  const blur = useTransform(
-    progress,
-    [index - 1, index, index + 1],
-    [8, 0, 8]
-  );
+  const rotateY = useTransform(progress, [index - 1, index, index + 1], [-45, 0, 45]);
+
+  const scale = useTransform(progress, [index - 1, index, index + 1], [0.85, 1, 0.85]);
+
+  const z = useTransform(progress, [index - 1, index, index + 1], [-100, 0, -100]);
+
+  const opacity = useTransform(progress, [index - 1, index, index + 1], [0.3, 1, 0.3]);
+
+  const blur = useTransform(progress, [index - 1, index, index + 1], [8, 0, 8]);
 
   const filter = useTransform(blur, (v) => `blur(${v}px)`);
 
@@ -66,7 +46,7 @@ function PhoneItem({
         z,
         opacity,
         filter,
-        WebkitBoxReflect: "below 10px linear-gradient(transparent 65%, rgba(255,255,255,0.15))",
+        WebkitBoxReflect: 'below 10px linear-gradient(transparent 65%, rgba(255,255,255,0.15))',
       }}
       className="relative w-[250px] h-[520px] transform-style-3d will-change-[transform,opacity,filter]"
     >
@@ -74,13 +54,7 @@ function PhoneItem({
         <div className="absolute top-[10px] left-1/2 -translate-x-1/2 w-[84px] h-[24px] bg-black rounded-[100px] z-50 shadow-[inset_0_-1px_2px_rgba(255,255,255,0.1)]"></div>
         <div className="absolute inset-0 z-40 pointer-events-none bg-gradient-to-br from-white/10 to-transparent via-transparent opacity-80 mix-blend-overlay"></div>
         <div className="relative w-[calc(100%-12px)] h-[calc(100%-12px)] m-[6px] rounded-[2.3rem] overflow-hidden shadow-[inset_0_0_15px_rgba(0,0,0,0.3)] dark:shadow-[inset_0_0_15px_rgba(0,0,0,1)] bg-background">
-          <Image
-            src={src}
-            alt={item.title}
-            fill
-            className="object-cover"
-            priority={index === 0}
-          />
+          <Image src={src} alt={item.title} fill className="object-cover" priority={index === 0} />
         </div>
       </div>
     </motion.div>
@@ -97,15 +71,15 @@ export function AppShowcase() {
     setMounted(true);
   }, []);
 
-  const theme = mounted && resolvedTheme === "light" ? "light" : "dark";
+  const theme = mounted && resolvedTheme === 'light' ? 'light' : 'dark';
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end end"],
+    offset: ['start start', 'end end'],
   });
 
   const stepProgress = useTransform(scrollYProgress, [0, 1], [0, screenshots.length - 1]);
-  
+
   const activeIndex = useTransform(stepProgress, (v) => Math.round(v));
   const springProgress = useSpring(activeIndex, {
     stiffness: 260,
@@ -124,7 +98,6 @@ export function AppShowcase() {
     y: useTransform(springProgress as MotionValue<number>, [i - 0.5, i, i + 0.5], [20, 0, -20]),
   }));
 
-
   return (
     <section className="relative w-full bg-background z-10 font-sans">
       <div ref={containerRef} className="relative w-full h-[400vh] snap-y snap-mandatory">
@@ -140,7 +113,11 @@ export function AppShowcase() {
           <div className="w-full text-center z-30 px-4 mt-16 mb-8 flex-shrink-0">
             <div className="relative h-16 w-full max-w-2xl mx-auto flex justify-center items-center">
               {screenshots.map((item, i) => (
-                <motion.div key={item.id} style={{ opacity: titleAnimations[i].opacity, y: titleAnimations[i].y }} className="absolute w-full text-center">
+                <motion.div
+                  key={item.id}
+                  style={{ opacity: titleAnimations[i].opacity, y: titleAnimations[i].y }}
+                  className="absolute w-full text-center"
+                >
                   <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-silver-matte">
                     {item.title}
                   </h2>
@@ -155,7 +132,13 @@ export function AppShowcase() {
               className="flex items-center gap-[100px] w-max px-[calc(50vw-125px)] h-full transform-style-3d will-change-transform"
             >
               {screenshots.map((item, i) => (
-                <PhoneItem key={item.id} item={item} index={i} progress={springProgress} theme={theme} />
+                <PhoneItem
+                  key={item.id}
+                  item={item}
+                  index={i}
+                  progress={springProgress}
+                  theme={theme}
+                />
               ))}
             </motion.div>
           </div>
@@ -164,4 +147,3 @@ export function AppShowcase() {
     </section>
   );
 }
-

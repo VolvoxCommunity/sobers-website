@@ -1,23 +1,23 @@
-"use client";
+'use client';
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
-import { TrophyIcon, ShieldCheckIcon, ExclamationTriangleIcon } from "@heroicons/react/24/outline";
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { TrophyIcon, ShieldCheckIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 
 export function UsageTimeline() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start 40%", "end 80%"],
+    offset: ['start 40%', 'end 80%'],
   });
 
-  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
   const titleVariants = {
-    hidden: { clipPath: "inset(0 100% 0 0)", y: 28, opacity: 1 },
+    hidden: { clipPath: 'inset(0 100% 0 0)', y: 28, opacity: 1 },
     visible: {
-      clipPath: "inset(0 0% 0 0)",
+      clipPath: 'inset(0 0% 0 0)',
       y: 0,
       opacity: 1,
       transition: {
@@ -35,7 +35,7 @@ export function UsageTimeline() {
       x: 0,
       scale: 1,
       rotateY: 0,
-      transition: { type: "spring" as const, bounce: 0.4, duration: 1, delay: 0.2 },
+      transition: { type: 'spring' as const, bounce: 0.4, duration: 1, delay: 0.2 },
     },
   };
 
@@ -46,14 +46,15 @@ export function UsageTimeline() {
       x: 0,
       scale: 1,
       rotateY: 0,
-      transition: { type: "spring" as const, bounce: 0.4, duration: 1, delay: 0.2 },
+      transition: { type: 'spring' as const, bounce: 0.4, duration: 1, delay: 0.2 },
     },
   };
 
   const dotVariants = (color: string) => ({
     hidden: {
-      backgroundColor: "var(--muted)",
-      boxShadow: "inset 0 2px 4px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.1), 0 0 0 4px var(--background)",
+      backgroundColor: 'var(--muted)',
+      boxShadow:
+        'inset 0 2px 4px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.1), 0 0 0 4px var(--background)',
     },
     visible: {
       backgroundColor: color,
@@ -74,9 +75,9 @@ export function UsageTimeline() {
           variants={titleVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
           className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-silver-matte will-change-transform"
-          style={{ willChange: "clip-path, transform" }}
+          style={{ willChange: 'clip-path, transform' }}
         >
           A Living Record.
         </motion.h1>
@@ -96,11 +97,11 @@ export function UsageTimeline() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, margin: "-20%" }}
+          viewport={{ once: false, margin: '-20%' }}
           className="timeline-row relative w-full flex justify-start md:justify-end md:pr-[50%] mb-24"
         >
           <motion.div
-            variants={dotVariants("var(--primary)")}
+            variants={dotVariants('var(--primary)')}
             className="absolute top-8 left-[16px] md:left-1/2 md:-ml-[6px] w-3 h-3 rounded-full timeline-dot z-20"
           ></motion.div>
           <motion.div
@@ -112,7 +113,9 @@ export function UsageTimeline() {
                 <span className="text-primary-foreground text-sm font-bold">1</span>
               </div>
               <div>
-                <p className="text-[10px] text-primary uppercase tracking-widest font-bold">Day 1</p>
+                <p className="text-[10px] text-primary uppercase tracking-widest font-bold">
+                  Day 1
+                </p>
                 <h3 className="text-foreground text-xl font-bold tracking-tight">The Commitment</h3>
               </div>
             </div>
@@ -126,11 +129,11 @@ export function UsageTimeline() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, margin: "-20%" }}
+          viewport={{ once: false, margin: '-20%' }}
           className="timeline-row relative w-full flex justify-start md:justify-start md:pl-[50%] mb-24"
         >
           <motion.div
-            variants={dotVariants("var(--success)")}
+            variants={dotVariants('var(--success)')}
             className="absolute top-8 left-[16px] md:left-1/2 md:-ml-[6px] w-3 h-3 rounded-full timeline-dot z-20"
           ></motion.div>
           <motion.div
@@ -142,8 +145,12 @@ export function UsageTimeline() {
                 <TrophyIcon className="w-5 h-5 text-primary-foreground" />
               </div>
               <div>
-                <p className="text-[10px] text-success uppercase tracking-widest font-bold">Day 30</p>
-                <h3 className="text-foreground text-xl font-bold tracking-tight">First Milestone</h3>
+                <p className="text-[10px] text-success uppercase tracking-widest font-bold">
+                  Day 30
+                </p>
+                <h3 className="text-foreground text-xl font-bold tracking-tight">
+                  First Milestone
+                </h3>
               </div>
             </div>
             <p className="text-muted-foreground font-light text-sm">
@@ -156,11 +163,11 @@ export function UsageTimeline() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, margin: "-20%" }}
+          viewport={{ once: false, margin: '-20%' }}
           className="timeline-row relative w-full flex justify-start md:justify-end md:pr-[50%] mb-24"
         >
           <motion.div
-            variants={dotVariants("var(--accent)")}
+            variants={dotVariants('var(--accent)')}
             className="absolute top-8 left-[16px] md:left-1/2 md:-ml-[6px] w-3 h-3 rounded-full timeline-dot z-20"
           ></motion.div>
           <motion.div
@@ -172,8 +179,12 @@ export function UsageTimeline() {
                 <ShieldCheckIcon className="w-5 h-5 text-primary-foreground" />
               </div>
               <div>
-                <p className="text-[10px] text-accent uppercase tracking-widest font-bold">Step 4</p>
-                <h3 className="text-foreground text-xl font-bold tracking-tight">Moral Inventory</h3>
+                <p className="text-[10px] text-accent uppercase tracking-widest font-bold">
+                  Step 4
+                </p>
+                <h3 className="text-foreground text-xl font-bold tracking-tight">
+                  Moral Inventory
+                </h3>
               </div>
             </div>
             <p className="text-muted-foreground font-light text-sm">
@@ -186,11 +197,11 @@ export function UsageTimeline() {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, margin: "-20%" }}
+          viewport={{ once: false, margin: '-20%' }}
           className="timeline-row relative w-full flex justify-start md:justify-start md:pl-[50%]"
         >
           <motion.div
-            variants={dotVariants("var(--warning)")}
+            variants={dotVariants('var(--warning)')}
             className="absolute top-8 left-[16px] md:left-1/2 md:-ml-[6px] w-3 h-3 rounded-full timeline-dot z-20"
           ></motion.div>
           <motion.div
@@ -202,12 +213,17 @@ export function UsageTimeline() {
                 <ExclamationTriangleIcon className="w-5 h-5 text-primary-foreground" />
               </div>
               <div>
-                <p className="text-[10px] text-warning uppercase tracking-widest font-bold">Day 112</p>
-                <h3 className="text-foreground text-xl font-bold tracking-tight">Support Activated</h3>
+                <p className="text-[10px] text-warning uppercase tracking-widest font-bold">
+                  Day 112
+                </p>
+                <h3 className="text-foreground text-xl font-bold tracking-tight">
+                  Support Activated
+                </h3>
               </div>
             </div>
             <p className="text-muted-foreground font-light text-sm">
-              Relapse logged. Judgment-free notification sent to sponsor. The journey resets, but the experience remains.
+              Relapse logged. Judgment-free notification sent to sponsor. The journey resets, but
+              the experience remains.
             </p>
           </motion.div>
         </motion.div>

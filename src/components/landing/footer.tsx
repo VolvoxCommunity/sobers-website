@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
-import Link from "next/link";
-import { APP_STORE_URL, PLAY_STORE_URL } from "./hero";
+import { useRef, useState } from 'react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import Link from 'next/link';
+import { APP_STORE_URL, PLAY_STORE_URL } from './hero';
 
-export const VOLVOX_URL = "https://volvox.dev";
-export const SUPPORT_EMAIL = "support@volvox.dev";
+export const VOLVOX_URL = 'https://volvox.dev';
+export const SUPPORT_EMAIL = 'support@volvox.dev';
 
 const AppleIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -25,9 +25,16 @@ interface MagneticButtonProps {
   className?: string;
   href?: string;
   onClick?: () => void;
+  'aria-label'?: string;
 }
 
-function MagneticButton({ children, className, href, onClick }: MagneticButtonProps) {
+function MagneticButton({
+  children,
+  className,
+  href,
+  onClick,
+  'aria-label': ariaLabel,
+}: MagneticButtonProps) {
   const ref = useRef<HTMLAnchorElement & HTMLButtonElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -50,13 +57,14 @@ function MagneticButton({ children, className, href, onClick }: MagneticButtonPr
     <Component
       ref={ref}
       href={href}
-      target={href?.startsWith("http") ? "_blank" : undefined}
-      rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
+      target={href?.startsWith('http') ? '_blank' : undefined}
+      rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
       onClick={onClick}
+      aria-label={ariaLabel}
       onMouseMove={handleMouse}
       onMouseLeave={reset}
       animate={{ x: position.x, y: position.y }}
-      transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+      transition={{ type: 'spring', stiffness: 150, damping: 15, mass: 0.1 }}
       className={className}
     >
       {children}
@@ -69,11 +77,11 @@ export function Footer() {
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end end"],
+    offset: ['start end', 'end end'],
   });
 
   // Giant text animations
-  const textY = useTransform(scrollYProgress, [0.8, 1], ["10vh", "0vh"]);
+  const textY = useTransform(scrollYProgress, [0.8, 1], ['10vh', '0vh']);
   const textScale = useTransform(scrollYProgress, [0.8, 1], [0.8, 1]);
   const textOpacity = useTransform(scrollYProgress, [0.8, 1], [0, 1]);
 
@@ -82,24 +90,23 @@ export function Footer() {
   const contentOpacity = useTransform(scrollYProgress, [0.4, 1], [0, 1]);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <>
       <div className="relative z-10 w-full h-8 bg-background rounded-b-3xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.8)] border-b border-border -mb-8"></div>
 
-      <div 
+      <div
         ref={containerRef}
-        className="relative h-[100vh] w-full" 
-        style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
+        className="relative h-[100vh] w-full"
+        style={{ clipPath: 'polygon(0% 0, 100% 0%, 100% 100%, 0 100%)' }}
       >
         <footer className="fixed bottom-0 left-0 w-full h-[100vh] bg-background flex flex-col justify-between overflow-hidden font-sans">
-          
           <div className="absolute top-1/2 left-1/2 w-[80vw] h-[60vh] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle_at_50%_50%,var(--primary)_0%,var(--accent)_40%,transparent_70%)] opacity-15 blur-[80px] pointer-events-none z-0 animate-[breathe_8s_ease-in-out_infinite_alternate]"></div>
           <div className="bg-grid absolute inset-0 [mask-image:linear-gradient(to_bottom,transparent,black_30%,black_70%,transparent)]"></div>
 
-          <motion.div 
+          <motion.div
             style={{ y: textY, scale: textScale, opacity: textOpacity }}
             className="absolute bottom-[-5vh] left-1/2 -translate-x-1/2 whitespace-nowrap z-0 pointer-events-none select-none text-[26vw] leading-[0.75] font-black tracking-[-0.05em] text-transparent [-webkit-text-stroke:1px_var(--border)] bg-[linear-gradient(180deg,var(--muted)_0%,transparent_60%)] bg-clip-text"
           >
@@ -125,7 +132,7 @@ export function Footer() {
             </div>
           </div>
 
-          <motion.div 
+          <motion.div
             style={{ y: contentY, opacity: contentOpacity }}
             className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 mt-20 w-full max-w-5xl mx-auto"
           >
@@ -135,34 +142,64 @@ export function Footer() {
 
             <div className="flex flex-col items-center gap-6 w-full">
               <div className="flex flex-wrap justify-center gap-4 w-full">
-                <MagneticButton 
-                  href={APP_STORE_URL} 
+                <MagneticButton
+                  href={APP_STORE_URL}
                   className="glass-pill bg-card px-10 py-5 rounded-full text-foreground font-bold text-sm md:text-base flex items-center gap-3 group"
                 >
                   <AppleIcon className="w-7 h-8 transition-transform group-hover:scale-105 text-muted-foreground group-hover:text-foreground" />
                   <div className="text-left font-sans">
-                    <div className="text-[9px] md:text-[10px] font-bold tracking-wider text-muted-foreground uppercase mb-[-2px]">Download on the</div>
-                    <div className="text-lg md:text-xl font-bold leading-none tracking-tight">App Store</div>
+                    <div className="text-[9px] md:text-[10px] font-bold tracking-wider text-muted-foreground uppercase mb-[-2px]">
+                      Download on the
+                    </div>
+                    <div className="text-lg md:text-xl font-bold leading-none tracking-tight">
+                      App Store
+                    </div>
                   </div>
                 </MagneticButton>
-                <MagneticButton 
-                  href={PLAY_STORE_URL} 
+                <MagneticButton
+                  href={PLAY_STORE_URL}
                   className="glass-pill bg-card px-10 py-5 rounded-full text-foreground font-bold text-sm md:text-base flex items-center gap-3 group"
                 >
                   <GooglePlayIcon className="w-6 h-6 md:w-7 md:h-7 transition-transform group-hover:scale-105 text-foreground" />
                   <div className="text-left font-sans">
-                    <div className="text-[9px] md:text-[10px] font-bold tracking-wider text-muted-foreground uppercase mb-[-2px]">Get it on</div>
-                    <div className="text-lg md:text-xl font-bold leading-none tracking-tight">Google Play</div>
+                    <div className="text-[9px] md:text-[10px] font-bold tracking-wider text-muted-foreground uppercase mb-[-2px]">
+                      Get it on
+                    </div>
+                    <div className="text-lg md:text-xl font-bold leading-none tracking-tight">
+                      Google Play
+                    </div>
                   </div>
                 </MagneticButton>
               </div>
               <div className="flex flex-wrap justify-center gap-3 md:gap-6 w-full mt-2">
-                <MagneticButton href="/privacy" className="glass-pill bg-card px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">Privacy Policy</MagneticButton>
-                <MagneticButton href="/terms" className="glass-pill bg-card px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">Terms of Service</MagneticButton>
-                <MagneticButton href="/support" className="glass-pill bg-card px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground">Support</MagneticButton>
-                <MagneticButton href="https://discord.gg/8ahXACdamN" className="glass-pill bg-card px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground flex items-center gap-2 group">
-                  <svg className="w-4 h-4 transition-colors group-hover:text-[#5865F2]" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037 19.736 19.736 0 0 0-4.885 1.515.069.069 0 0 0-.032.027C.533 9.048-.32 13.579.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.419-2.157 2.419zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.419-2.157 2.419z"/>
+                <MagneticButton
+                  href="/privacy"
+                  className="glass-pill bg-card px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground"
+                >
+                  Privacy Policy
+                </MagneticButton>
+                <MagneticButton
+                  href="/terms"
+                  className="glass-pill bg-card px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground"
+                >
+                  Terms of Service
+                </MagneticButton>
+                <MagneticButton
+                  href="/support"
+                  className="glass-pill bg-card px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground"
+                >
+                  Support
+                </MagneticButton>
+                <MagneticButton
+                  href="https://discord.gg/8ahXACdamN"
+                  className="glass-pill bg-card px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground flex items-center gap-2 group"
+                >
+                  <svg
+                    className="w-4 h-4 transition-colors group-hover:text-[#5865F2]"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037 19.736 19.736 0 0 0-4.885 1.515.069.069 0 0 0-.032.027C.533 9.048-.32 13.579.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.419-2.157 2.419zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.419-2.157 2.419z" />
                   </svg>
                   Discord
                 </MagneticButton>
@@ -175,23 +212,44 @@ export function Footer() {
               © 2026 Volvox. All rights reserved.
             </div>
 
-            <Link 
+            <Link
               href={VOLVOX_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="glass-pill px-6 py-3 rounded-full flex items-center gap-2 order-1 md:order-2 group border-border bg-card hover:bg-muted transition-colors"
             >
-              <span className="text-muted-foreground text-[10px] md:text-xs font-bold uppercase tracking-widest">Crafted with</span>
-              <span className="text-[#ef4444] animate-[heartbeat_2s_cubic-bezier(0.25,1,0.5,1)_infinite] text-sm md:text-base inline-block">❤</span>
-              <span className="text-muted-foreground text-[10px] md:text-xs font-bold uppercase tracking-widest">by</span>
-              <span className="text-foreground font-black text-xs md:text-sm tracking-normal ml-1">Volvox</span>
+              <span className="text-muted-foreground text-[10px] md:text-xs font-bold uppercase tracking-widest">
+                Crafted with
+              </span>
+              <span className="text-[#ef4444] animate-[heartbeat_2s_cubic-bezier(0.25,1,0.5,1)_infinite] text-sm md:text-base inline-block">
+                ❤
+              </span>
+              <span className="text-muted-foreground text-[10px] md:text-xs font-bold uppercase tracking-widest">
+                by
+              </span>
+              <span className="text-foreground font-black text-xs md:text-sm tracking-normal ml-1">
+                Volvox
+              </span>
             </Link>
 
-            <MagneticButton 
-              onClick={scrollToTop} 
+            <MagneticButton
+              onClick={scrollToTop}
+              aria-label="Scroll to top"
               className="w-12 h-12 rounded-full glass-pill bg-card flex items-center justify-center text-muted-foreground hover:text-foreground group order-3 cursor-pointer"
             >
-              <svg className="w-5 h-5 transform group-hover:-translate-y-1.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+              <svg
+                className="w-5 h-5 transform group-hover:-translate-y-1.5 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 10l7-7m0 0l7 7m-7-7v18"
+                ></path>
+              </svg>
             </MagneticButton>
           </div>
         </footer>
