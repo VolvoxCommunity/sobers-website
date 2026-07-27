@@ -59,8 +59,9 @@ function FAQItem({
         className={`w-full overflow-hidden transition-colors duration-300 rounded-3xl border border-border bg-card shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02)] hover:bg-muted ${isOpen ? 'bg-muted' : ''}`}
       >
         <button
+          type="button"
           onClick={toggleOpen}
-          className="w-full px-6 py-5 md:px-8 md:py-6 flex items-center justify-between text-left focus:outline-none"
+          className="w-full px-6 py-5 md:px-8 md:py-6 flex items-center justify-between text-left outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-ring/50"
         >
           <span className="text-base md:text-lg font-medium text-foreground tracking-wide">
             {item.question}

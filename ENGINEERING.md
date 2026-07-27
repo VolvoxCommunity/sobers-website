@@ -8,14 +8,14 @@ Pilot repo: `VolvoxCommunity/sobers-website`.
 
 Every active repo must have:
 
-| File                                  | Purpose                                                                           |
-| ------------------------------------- | --------------------------------------------------------------------------------- |
-| `README.md`                           | What the project is, how to run it locally, how to deploy it                      |
-| `ENGINEERING.md`                      | This document                                                                     |
-| `.github/workflows/ci.yml`            | The validation chain, run on every PR and push to `main`                          |
-| `.github/PULL_REQUEST_TEMPLATE.md`    | Review checklist aligned with the definition of done                              |
-| `.env.example`                        | Every required environment variable, with placeholder values — never real secrets |
-| `package.json` `packageManager` field | Pins the exact package manager version (required by CI setup actions)             |
+| File                                  | Purpose                                                               |
+| ------------------------------------- | --------------------------------------------------------------------- |
+| `README.md`                           | What the project is, how to run it locally, how to deploy it          |
+| `ENGINEERING.md`                      | This document                                                         |
+| `.github/workflows/ci.yml`            | The validation chain, run on every PR and push to `main`              |
+| `.github/PULL_REQUEST_TEMPLATE.md`    | Review checklist aligned with the definition of done                  |
+| `.env.example`                        | Required when the app reads environment variables; placeholders only  |
+| `package.json` `packageManager` field | Pins the exact package manager version (required by CI setup actions) |
 
 Standard tooling across the estate:
 
@@ -23,7 +23,7 @@ Standard tooling across the estate:
 - **Language:** TypeScript in strict mode (`"strict": true`).
 - **Formatting:** Prettier (house config below) or Biome where already adopted. One formatter per repo, enforced in CI — never both.
 - **Linting:** ESLint (flat config) or Biome, framework preset included (`eslint-config-next`, `expo lint`, etc.).
-- **Secrets:** Never committed. `.env*` files are gitignored; `.env.example` documents the shape.
+- **Secrets:** Never committed. `.env*` files are gitignored; when environment variables are required, `.env.example` documents the shape.
 
 House Prettier config (`.prettierrc`):
 
@@ -58,12 +58,13 @@ House Prettier config (`.prettierrc`):
 
 The validation chain is the same locally and in CI:
 
-```
+```text
 format:check → lint → typecheck → test → build
 ```
 
 - Every repo exposes these as package scripts: `format`, `format:check`, `lint`, `typecheck`, `test` (where tests exist), `build`, and a `validate` script that runs the full chain.
 - CI (`.github/workflows/ci.yml`) runs the full chain on every PR and every push to `main`, with `--frozen-lockfile` installs.
+- External quality services use committed configuration. Their formatter version and exclusions must match the local package scripts so local and hosted checks cannot disagree.
 - A red step is a blocker: fix it or revert it. Never merge on red, never `--no-verify` past hooks, never disable a check to get a PR through. If a check is wrong, fixing the check is its own PR.
 - Steps that don't apply yet (e.g. `test` in a repo with no tests) are omitted from CI rather than stubbed to a no-op that fakes a pass — a green check must mean the thing it names actually ran.
 
@@ -96,7 +97,7 @@ A change is **done** when all of the following are true:
 2. **The validation chain is green** locally and in CI.
 3. **Tests exist** for new logic and for the bug being fixed, per section 4.
 4. **Review happened** per section 5, and comments are resolved.
-5. **Docs are current** — README, `.env.example`, and any affected runbooks updated in the same PR. Documentation is never left stale.
+5. **Docs are current** — README, `.env.example` when applicable, and any affected runbooks updated in the same PR. Documentation is never left stale.
 6. **No new warnings or errors** are introduced in build output or runtime logs; errors are handled structurally (no silent catches) and reported to Sentry where the repo has it.
 7. **Deployed or explicitly handed off** — the change is live where it's supposed to be, or the PR states who deploys it and when. Production deploys of client-facing properties require CEO sign-off.
 

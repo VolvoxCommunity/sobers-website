@@ -21,16 +21,28 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Scripts
 
-| Command      | Description                                  |
-| ------------ | -------------------------------------------- |
-| `pnpm dev`   | Start dev server                             |
-| `pnpm build` | Production build (includes TypeScript check) |
-| `pnpm start` | Start production server                      |
-| `pnpm lint`  | Run ESLint                                   |
+| Command             | Description                                       |
+| ------------------- | ------------------------------------------------- |
+| `pnpm dev`          | Start the development server                      |
+| `pnpm build`        | Create the production build                       |
+| `pnpm start`        | Start the production server                       |
+| `pnpm format`       | Format supported files with Prettier              |
+| `pnpm format:check` | Check formatting without changing files           |
+| `pnpm lint`         | Run ESLint                                        |
+| `pnpm typecheck`    | Run TypeScript checks without emitting files      |
+| `pnpm validate`     | Run formatting, lint, typecheck, and build checks |
+
+## Engineering
+
+See [ENGINEERING.md](./ENGINEERING.md) for Volvox repository conventions, the validation chain, review expectations, and the definition of done.
+
+## Deployment
+
+Pull requests receive Vercel preview deployments. Merging to `main` deploys the production site; production merges require CEO sign-off under the Volvox engineering standards.
 
 ## Structure
 
-```
+```text
 src/
 ├── app/
 │   ├── page.tsx          # Landing page

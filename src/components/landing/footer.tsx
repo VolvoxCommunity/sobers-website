@@ -25,9 +25,16 @@ interface MagneticButtonProps {
   className?: string;
   href?: string;
   onClick?: () => void;
+  'aria-label'?: string;
 }
 
-function MagneticButton({ children, className, href, onClick }: MagneticButtonProps) {
+function MagneticButton({
+  children,
+  className,
+  href,
+  onClick,
+  'aria-label': ariaLabel,
+}: MagneticButtonProps) {
   const ref = useRef<HTMLAnchorElement & HTMLButtonElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -53,6 +60,7 @@ function MagneticButton({ children, className, href, onClick }: MagneticButtonPr
       target={href?.startsWith('http') ? '_blank' : undefined}
       rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
       onClick={onClick}
+      aria-label={ariaLabel}
       onMouseMove={handleMouse}
       onMouseLeave={reset}
       animate={{ x: position.x, y: position.y }}
@@ -226,6 +234,7 @@ export function Footer() {
 
             <MagneticButton
               onClick={scrollToTop}
+              aria-label="Scroll to top"
               className="w-12 h-12 rounded-full glass-pill bg-card flex items-center justify-center text-muted-foreground hover:text-foreground group order-3 cursor-pointer"
             >
               <svg
