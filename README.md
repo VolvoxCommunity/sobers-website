@@ -21,12 +21,12 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Scripts
 
-| Command | Description |
-|---|---|
-| `pnpm dev` | Start dev server |
+| Command      | Description                                  |
+| ------------ | -------------------------------------------- |
+| `pnpm dev`   | Start dev server                             |
 | `pnpm build` | Production build (includes TypeScript check) |
-| `pnpm start` | Start production server |
-| `pnpm lint` | Run ESLint |
+| `pnpm start` | Start production server                      |
+| `pnpm lint`  | Run ESLint                                   |
 
 ## Structure
 

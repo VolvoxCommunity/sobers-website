@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { motion } from "motion/react";
-import { CheckIcon, ComputerDesktopIcon } from "@heroicons/react/24/outline";
+import { motion } from 'motion/react';
+import { CheckIcon, ComputerDesktopIcon } from '@heroicons/react/24/outline';
 
 const AppleIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -63,9 +63,9 @@ export function BentoFeatures() {
           variants={titleVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
           className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-silver-matte will-change-transform"
-          style={{ willChange: "clip-path, transform" }}
+          style={{ willChange: 'clip-path, transform' }}
         >
           Own Recovery.
         </motion.h1>
@@ -76,7 +76,7 @@ export function BentoFeatures() {
         variants={gridVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: '-100px' }}
         className="w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[300px] z-10"
       >
         {/* 1. Sponsor-Sponsee Connection */}
@@ -106,9 +106,12 @@ export function BentoFeatures() {
             </div>
           </div>
           <div className="z-20">
-            <h3 className="text-2xl font-bold text-foreground mb-2 tracking-tight">Sponsor Connection</h3>
+            <h3 className="text-2xl font-bold text-foreground mb-2 tracking-tight">
+              Sponsor Connection
+            </h3>
             <p className="text-muted-foreground font-light text-sm max-w-md">
-              Secure pairing with unique invite codes. Connect instantly and establish accountability in seconds.
+              Secure pairing with unique invite codes. Connect instantly and establish
+              accountability in seconds.
             </p>
           </div>
         </motion.div>
@@ -119,8 +122,12 @@ export function BentoFeatures() {
           className="bento-card group lg:row-span-2 lg:col-span-1 flex flex-col justify-between p-8"
         >
           <div className="z-20 mb-8">
-            <h3 className="text-2xl font-bold text-foreground mb-2 tracking-tight">12-Step Progress</h3>
-            <p className="text-muted-foreground font-light text-sm">Track your journey sequentially through all 12 steps.</p>
+            <h3 className="text-2xl font-bold text-foreground mb-2 tracking-tight">
+              12-Step Progress
+            </h3>
+            <p className="text-muted-foreground font-light text-sm">
+              Track your journey sequentially through all 12 steps.
+            </p>
           </div>
           <div className="relative flex-1 flex flex-col justify-start ml-4 mt-4">
             <div className="absolute left-3.5 top-2 bottom-6 w-0.5 bg-secondary rounded-full"></div>
@@ -144,7 +151,9 @@ export function BentoFeatures() {
             </div>
             <div className="flex items-center relative z-10 opacity-40">
               <div className="w-7 h-7 rounded-full bg-muted flex items-center justify-center border-2 border-border"></div>
-              <span className="ml-4 text-muted-foreground font-semibold text-sm">Step 4: Courage</span>
+              <span className="ml-4 text-muted-foreground font-semibold text-sm">
+                Step 4: Courage
+              </span>
             </div>
           </div>
         </motion.div>
@@ -173,13 +182,19 @@ export function BentoFeatures() {
               </svg>
               <div className="flex flex-col items-center">
                 <span className="text-3xl font-black text-foreground">365</span>
-                <span className="text-[8px] uppercase tracking-widest text-muted-foreground font-bold">Days</span>
+                <span className="text-[8px] uppercase tracking-widest text-muted-foreground font-bold">
+                  Days
+                </span>
               </div>
             </div>
           </div>
           <div className="z-20">
-            <h3 className="text-2xl font-bold text-foreground mb-2 tracking-tight">Sobriety Tracking</h3>
-            <p className="text-muted-foreground font-light text-sm">Transparent, honest day counting visualized beautifully.</p>
+            <h3 className="text-2xl font-bold text-foreground mb-2 tracking-tight">
+              Sobriety Tracking
+            </h3>
+            <p className="text-muted-foreground font-light text-sm">
+              Transparent, honest day counting visualized beautifully.
+            </p>
           </div>
         </motion.div>
 
@@ -203,8 +218,12 @@ export function BentoFeatures() {
             </div>
           </div>
           <div className="z-20">
-            <h3 className="text-2xl font-bold text-foreground mb-2 tracking-tight">Task Management</h3>
-            <p className="text-muted-foreground font-light text-sm">Sponsors assign tasks. Sponsees complete and add notes.</p>
+            <h3 className="text-2xl font-bold text-foreground mb-2 tracking-tight">
+              Task Management
+            </h3>
+            <p className="text-muted-foreground font-light text-sm">
+              Sponsors assign tasks. Sponsees complete and add notes.
+            </p>
           </div>
         </motion.div>
 
@@ -214,7 +233,9 @@ export function BentoFeatures() {
           className="bento-card group lg:col-span-2 flex flex-col justify-between p-8 overflow-hidden"
         >
           <div className="z-20">
-            <h3 className="text-2xl font-bold text-foreground mb-2 tracking-tight">Journey Timeline</h3>
+            <h3 className="text-2xl font-bold text-foreground mb-2 tracking-tight">
+              Journey Timeline
+            </h3>
             <p className="text-muted-foreground font-light text-sm max-w-md">
               Visualize milestones, relapses, and overall step progress over time.
             </p>
@@ -222,7 +243,11 @@ export function BentoFeatures() {
 
           <div className="relative w-full h-32 mt-6 opacity-80 group-hover:opacity-100 transition-opacity">
             {/* Graph SVG */}
-            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 100" preserveAspectRatio="none">
+            <svg
+              className="absolute inset-0 w-full h-full"
+              viewBox="0 0 400 100"
+              preserveAspectRatio="none"
+            >
               <defs>
                 <linearGradient id="graphGrad" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stopColor="var(--success)" stopOpacity="0.2" />
@@ -241,7 +266,7 @@ export function BentoFeatures() {
                 stroke="var(--success)"
                 strokeWidth="3"
                 strokeLinecap="round"
-                style={{ filter: "drop-shadow(0 0 8px var(--success))" }}
+                style={{ filter: 'drop-shadow(0 0 8px var(--success))' }}
               />
             </svg>
 
@@ -249,10 +274,10 @@ export function BentoFeatures() {
             <div
               className="absolute w-3 h-3 bg-success rounded-full border-2 border-background"
               style={{
-                left: "33.75%",
-                top: "29%",
-                transform: "translate(-50%,-50%)",
-                boxShadow: "0 0 10px var(--success)",
+                left: '33.75%',
+                top: '29%',
+                transform: 'translate(-50%,-50%)',
+                boxShadow: '0 0 10px var(--success)',
               }}
             ></div>
 
@@ -260,10 +285,10 @@ export function BentoFeatures() {
             <div
               className="absolute w-3 h-3 bg-success rounded-full border-2 border-background"
               style={{
-                left: "56.25%",
-                top: "55%",
-                transform: "translate(-50%,-50%)",
-                boxShadow: "0 0 10px var(--success)",
+                left: '56.25%',
+                top: '55%',
+                transform: 'translate(-50%,-50%)',
+                boxShadow: '0 0 10px var(--success)',
               }}
             ></div>
 
@@ -271,10 +296,10 @@ export function BentoFeatures() {
             <div
               className="absolute w-3.5 h-3.5 bg-background rounded-full border-2 border-success"
               style={{
-                left: "92.25%",
-                top: "19%",
-                transform: "translate(-50%,-50%)",
-                boxShadow: "0 0 15px var(--foreground)",
+                left: '92.25%',
+                top: '19%',
+                transform: 'translate(-50%,-50%)',
+                boxShadow: '0 0 15px var(--foreground)',
               }}
             ></div>
           </div>
@@ -297,8 +322,12 @@ export function BentoFeatures() {
             </div>
           </div>
           <div className="z-20">
-            <h3 className="text-2xl font-bold text-foreground mb-2 tracking-tight">Cross-Platform</h3>
-            <p className="text-muted-foreground font-light text-sm">Available on iOS, Android, and Web. Syncs everywhere.</p>
+            <h3 className="text-2xl font-bold text-foreground mb-2 tracking-tight">
+              Cross-Platform
+            </h3>
+            <p className="text-muted-foreground font-light text-sm">
+              Available on iOS, Android, and Web. Syncs everywhere.
+            </p>
           </div>
         </motion.div>
       </motion.div>
